@@ -10,10 +10,13 @@ export default function MoviesCard(props) {
 
   return(
     <article className="movies-card">
-      <img className="movies-card__image" src={props.image} alt="Кадр из фильма"/>
+      <img className="movies-card__image" src={props.image} alt="Обложка фильма"/>
       <div className="movies-card__info-block">
         <div className="movies-card__title-length-column">
-          <a className="movies-card__title" href="https://beatfilmfestival.ru/">33 слова о дизайне</a>
+          <a className="movies-card__title" 
+            target="_blank" 
+            rel="noopener noreferrer"  
+            href="https://beatfilmfestival.ru/">33 слова о дизайне</a>
           <p className="movies-card__length">1ч42м</p>
         </div>
         {props.movieList 

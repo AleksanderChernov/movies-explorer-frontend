@@ -12,9 +12,21 @@ function Footer(props) {
         <hr className="footer__separator"/>
         <div className="footer__links-wrapper">
           <div className="footer__links-block footer__links-block_right">
-            <a className="footer__link" href="https://praktikum.yandex.ru/">Яндекс.Практикум</a>
-            <a className="footer__link" href="https://github.com/">Github</a>
-            <a className="footer__link" href="https://www.facebook.com/">Facebook</a>
+            <a className="footer__link" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              href="https://praktikum.yandex.ru/">Яндекс.Практикум
+            </a>
+            <a className="footer__link"
+              target="_blank" 
+              rel="noopener noreferrer" 
+              href="https://github.com/">Github
+            </a>
+            <a className="footer__link" 
+              target="_blank"
+              rel="noopener noreferrer"
+              href="https://www.facebook.com/">Facebook
+            </a>
           </div>
           <div className="footer__links-block footer__links-block_left">
             <p className="footer__copyright"> &copy;2021</p>

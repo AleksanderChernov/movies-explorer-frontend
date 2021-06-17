@@ -19,28 +19,28 @@ function AuthForm(props) {
         { currentRoute === "/signup" ? (<>
         <p className="auth-form__input-title">Имя</p>
         <input className="auth-form__input auth-form__input_name"
-        id="name" 
-        name="name"  
-        placeholder=""
-        type="name"
-        required
+          id="name" 
+          name="name"  
+          placeholder=""
+          type="name"
+          required
         />
         </>) : ''}
         <p className="auth-form__input-title">E-mail</p>
         <input className="auth-form__input auth-form__input_email"
-        id="email" 
-        name="email"  
-        placeholder=""
-        type="email"
-        required
+          id="email" 
+          name="email"  
+          placeholder=""
+          type="email"
+          required
         />
         <p className="auth-form__input-title">Пароль</p>
         <input className="auth-form__input auth-form__input_password"
-        id="password" 
-        name="password" 
-        placeholder=""
-        type="password"
-        required
+          id="password" 
+          name="password" 
+          placeholder=""
+          type="password"
+          required
         />
       </div>
       <button className={`${
