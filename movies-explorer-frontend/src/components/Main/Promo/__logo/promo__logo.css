@@ -1,0 +1,21 @@
+.promo__logo {
+  padding-bottom: 40px;
+  max-width: 100%;
+  object-fit: cover;
+  height: 230px;
+}
+
+@media only screen and (min-width: 768px) {
+  .promo__logo {
+    padding-bottom: 70px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .promo__logo {
+    padding: 0 70px 60px 60px;
+    height: 244px;
+    margin-top: 102px;
+    align-self: end;
+  }
+}

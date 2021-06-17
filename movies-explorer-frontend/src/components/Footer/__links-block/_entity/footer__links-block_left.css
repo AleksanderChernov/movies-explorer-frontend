@@ -1,0 +1,6 @@
+@media only screen and (min-width: 768px) {
+  .footer__links-block_left {
+    flex-direction: row;
+    order: -1;
+  }
+}

@@ -1,0 +1,35 @@
+.portfolio {
+  margin: 70px 4.2% 0;
+  display: flex;
+  flex-flow: column;
+  background-color: rgba(32, 32, 32, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  .portfolio {
+    margin: 90px 6.5% 0;
+    padding-bottom: 18px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .portfolio {
+    margin: 100px 5.5% 0;
+    padding-bottom: 54px;
+  }
+}
+
+/* Arrow */
+@import url(./__arrow/portfolio__arrow.css);
+
+/* Link-cell */
+@import url(./__link-cell/portfolio__link-cell.css);
+
+/* Links */
+@import url(./__links/portfolio__links.css);
+
+/* Separator */
+@import url(./__separator/portfolio__separator.css);
+
+/* Title */
+@import url(./__title/portfolio__title.css);

@@ -1,0 +1,52 @@
+.auth-form {
+  background-color: #202020;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  margin: 0 9%;
+}
+
+@media only screen and (min-width: 768px) {
+  .auth-form {
+    margin: 0 24%;
+    /* align-items: flex-start; */
+  }
+}
+
+/* Logo */
+@import url(./__logo/auth-form__logo.css);
+
+/* Title */
+@import url(./__title/auth-form__title.css);
+
+/* Header */
+@import url(./__header/auth-form__header.css);
+
+/* Input-block */
+@import url(./__input-block/auth-form__input-block.css);
+
+/* Input */
+@import url(./__input/auth-form__input.css);
+
+/* Input entities */
+@import url(./__input/_entity/auth-form__input_email.css);
+@import url(./__input/_entity/auth-form__input_password.css);
+@import url(./__input/_entity/auth-form__input_name.css);
+
+/* Input title */
+@import url(./__input-title/auth-form__input-title.css);
+
+/* Button */
+@import url(./__button/auth-form__button.css);
+
+/* Button special */
+@import url(./__button/_entity/auth-form__button_signup.css);
+
+/* Footer */
+@import url(./__footer/auth-form__footer.css);
+
+/* Dynamic */
+@import url(./__dynamic/auth-form__dynamic.css);
+
+/* Dynamic entities */
+@import url(./__dynamic/_entity/auth-form__dynamic_link.css);

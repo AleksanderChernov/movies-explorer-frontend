@@ -1,0 +1,21 @@
+.about-project__stages-wrapper {
+  display: flex;
+  flex-direction: column;
+  padding: 60px 0px 22px;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-project__stages-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    margin-right: 30px;
+    padding: 69px 0px 56px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-project__stages-wrapper {
+    justify-content: start;
+    margin-right: 0;
+  }
+}

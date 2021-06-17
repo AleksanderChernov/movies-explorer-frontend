@@ -1,0 +1,18 @@
+.footer__links-wrapper {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__links-wrapper {
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 3% 20px;
+  } 
+}
+
+@media only screen and (min-width: 1280px) {
+  .footer__links-wrapper {
+    margin: 0 5.5% 20px;
+  } 
+}

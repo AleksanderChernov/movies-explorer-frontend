@@ -1,0 +1,27 @@
+.not-found__button-back {
+  border: none;
+  color: rgba(66, 133, 244, 1);
+  background-color: #202020;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  margin: 0;
+  padding: 0 0 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .not-found__button-back {
+    font-size: 14px;
+    line-height: 16.94px;
+    padding: 0 0 230px;
+  }
+}
+
+.not-found__button-back:hover {
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity .35s ease-in-out;
+}

@@ -1,0 +1,47 @@
+.about-project {
+  margin: 0 5.3%;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-project {
+    margin: 0 6.5%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-project {
+    margin: 0 5.5%;
+  }
+}
+
+/* Title */
+@import url(./__title/about-project__title.css);
+
+/* Stages-title */
+@import url(./__stages-title/about-project__stages-title.css);
+
+/* Text-block */
+@import url(./__text-block/about-project__text-block.css);
+
+/* Progress bars wrappers */
+@import url(./__timeline-block/about-project__timeline-block.css);
+
+/* Progress bar entities */
+@import url(./__progress-block/about-project__progress-block.css);
+@import url(./__progress-block/about-project__progress-block_entities/about-project__progress-block_left.css);
+@import url(./__progress-block/about-project__progress-block_entities/about-project__progress-block_right.css);
+
+/* Underline */
+@import url(./__underline/about-project__underline.css);
+
+/* Колонки прогресса */
+@import url(./__timeline-columns/about-project__timeline-columns.css);
+
+/* Враппер этапов */
+@import url(./__stages-wrapper/about-project__stages-wrapper.css);
+
+/* Separator */
+@import url(./__separator/about-project__separator.css);
+
+/* Stages */
+@import url(./__stages/about-project__stages.css);

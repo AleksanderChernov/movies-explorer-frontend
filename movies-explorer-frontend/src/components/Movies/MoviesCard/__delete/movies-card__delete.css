@@ -1,0 +1,12 @@
+.movies-card__delete {
+  background: #222222 url(../../../../images/Card/close_button.svg);
+  border: none;
+  height: 16px;
+  width: 16px;
+}
+
+.movies-card__delete:hover {
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity .35s ease-in-out;
+}

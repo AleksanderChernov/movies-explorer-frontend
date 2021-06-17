@@ -1,0 +1,20 @@
+.auth-form__input {
+  background-color: rgb(47, 47, 47);
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15.73px;
+  text-align: left;
+  border: none;
+  padding: 15px;
+  border-radius: 8px;
+  width: 230px;
+}
+
+@media only screen and (min-width: 768px) {
+  .auth-form__input {
+    width: 368px;
+  }
+}

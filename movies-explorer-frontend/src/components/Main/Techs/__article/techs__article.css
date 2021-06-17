@@ -1,0 +1,26 @@
+.techs__article {
+  margin: 24px 0px 40px;
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 16px;
+  letter-spacing: -0.04em;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .techs__article {
+    font-size: 12px;
+    line-height: 18px;
+    width: 460px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .techs__article {
+    font-size: 14px;
+    line-height: 20px;
+  }
+}

@@ -1,0 +1,11 @@
+.header__nav-links-container {
+  display: none;
+}
+
+@media only screen and (min-width: 1000px) {
+  .header__nav-links-container {
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+  } 
+}
