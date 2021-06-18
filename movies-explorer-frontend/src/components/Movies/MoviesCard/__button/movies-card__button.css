@@ -1,0 +1,9 @@
+.movies-card__button {
+  width: 16px;
+  height: 16px;
+  background: rgba(49, 49, 49, 1);
+  border-radius: 50px;
+  border-color: white;
+  box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.09);
+  cursor: pointer;
+}

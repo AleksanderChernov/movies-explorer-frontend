@@ -1,0 +1,22 @@
+.navigation__button-close {
+  background: url(../../../images/Main/button_close.svg);
+  border: none;
+  position: absolute;
+  height: 35px;
+  width: 35px;
+  padding: 0;
+  right: 0;
+  margin: 13.5px 11.5px 0 0;
+  cursor: pointer;
+}
+
+.navigation__button-close:hover {
+  opacity: 0.5;
+  transition: opacity .35s ease-in-out;
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation__button-close {
+    margin: 22px 21px 0 0;
+  }
+}

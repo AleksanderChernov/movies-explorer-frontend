@@ -1,0 +1,16 @@
+.footer__separator {
+  margin: 21px 3% 0px;
+  border: 1px solid rgba(66, 66, 66, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__separator {
+    margin: 21px 3% 0px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .footer__separator {
+    margin: 21px 5.4% 0px;
+  }
+}

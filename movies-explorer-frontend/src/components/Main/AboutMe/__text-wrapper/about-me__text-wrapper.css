@@ -1,0 +1,15 @@
+/* .about-me__text-wrapper {
+  
+} */
+
+@media only screen and (min-width: 768px) {
+  .about-me__text-wrapper {
+    order: -1;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-me__text-wrapper {
+    margin-right: 250px;
+  }
+}

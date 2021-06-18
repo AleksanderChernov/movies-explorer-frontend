@@ -1,0 +1,29 @@
+.techs__title {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  padding: 45px 0px 28px;
+  border-bottom: 1px solid;
+  border-color: black;
+  margin: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .techs__title {
+    border-color: white;
+    font-size: 22px;
+    line-height: 26.63px;
+    padding: 90px 0 23px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .techs__title {
+    padding: 102px 0 23px;
+  }
+}

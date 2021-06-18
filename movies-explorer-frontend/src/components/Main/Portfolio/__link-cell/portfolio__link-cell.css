@@ -1,0 +1,23 @@
+.portfolio__link-cell {
+  margin: 20px 0px 19px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.portfolio__link-cell:nth-child(2) {
+  margin-top: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+
+  .portfolio__link-cell {
+    margin: 20px 0px 9px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .portfolio__link-cell:nth-child(2) {
+    margin-top: 47px;
+  }
+
+}

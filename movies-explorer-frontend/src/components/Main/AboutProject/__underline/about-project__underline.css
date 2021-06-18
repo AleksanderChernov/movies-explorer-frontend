@@ -1,0 +1,23 @@
+.about-project__underline {
+  color: rgba(160, 160, 160, 1);
+  font-family: Suisse Intl, 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 12.74px;
+  text-align: center;
+  margin: 10px 0px 70px;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-project__underline {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-project__underline {
+    margin: 14px 0px 70px;
+  }
+}

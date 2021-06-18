@@ -1,0 +1,18 @@
+.movies-card__image {
+  width: 300px;
+  height: 168px;
+}
+
+@media only screen and (min-width: 625px) {
+  .movies-card__image {
+    width: 339px;
+    height: 190px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .movies-card__image {
+    width: 270px;
+    height: 151px;
+  }
+}

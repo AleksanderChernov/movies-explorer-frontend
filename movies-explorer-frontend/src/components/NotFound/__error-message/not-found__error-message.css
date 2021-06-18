@@ -1,0 +1,19 @@
+.not-found__error-message {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0 284px;
+}
+
+@media only screen and (min-width: 768px) {
+  .not-found__error-message {
+    font-size: 16px;
+    line-height: 19.36px;
+    padding: 5px 0 185px;
+  }
+}

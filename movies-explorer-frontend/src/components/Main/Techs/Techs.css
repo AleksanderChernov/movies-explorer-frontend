@@ -1,0 +1,38 @@
+.techs {
+  padding: 0 5.3%;
+}
+
+@media only screen and (min-width: 768px) {
+  .techs {
+    padding: 0 6.3%;
+    background-color: #303030;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .techs {
+    padding: 0 5.5%;
+    background-color: #303030;
+  }
+}
+
+/* Title */
+@import url(./__title/techs__title.css);
+
+/* Block */
+@import url(./__block/techs__block.css);
+
+/* Main-header */
+@import url(./__main-header/techs__main-header.css);
+
+/* Techs-article */
+@import url(./__article/techs__article.css);
+
+/* Stack-list */
+@import url(./__stack-list/techs__stack-list.css);
+
+/* Stack-item */
+@import url(./__stack-item/techs__stack-item.css);
+
+/* Stack-name */
+@import url(./__stack-name/techs__stack-name.css);

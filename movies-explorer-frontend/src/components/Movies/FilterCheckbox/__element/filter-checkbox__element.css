@@ -1,0 +1,10 @@
+.filter-checkbox__element {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  background-color: grey;
+  display: flex;
+  flex-direction: column;
+  border-radius: 16px;
+}

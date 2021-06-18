@@ -1,0 +1,10 @@
+.footer__links-block_right {
+  display: flex;
+  flex-direction: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__links-block_right {
+    flex-direction: row;
+  }
+}

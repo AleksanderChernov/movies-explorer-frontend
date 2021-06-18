@@ -1,0 +1,29 @@
+.about-me__title {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21.78px;
+  margin: 133px 4% 0px;
+  letter-spacing: -0.04em;
+  text-align: left;
+  padding: 0px 0px 28px;
+  border-bottom: 1px solid;
+  border-color: rgba(218, 218, 218, 1);
+}
+
+@media only screen and (min-width: 768px) {
+  .about-me__title {
+    margin: 90px 0 0px;
+    font-size: 22px;
+    line-height: 26.63px;
+    padding: 0px 0px 21px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-me__title {
+    margin: 107px 0 0px;
+  }
+}

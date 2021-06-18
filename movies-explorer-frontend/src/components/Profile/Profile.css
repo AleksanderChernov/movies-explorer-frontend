@@ -1,0 +1,30 @@
+.profile {
+  background-color: rgba(32, 32, 32, 1);
+  display: flex;
+  flex-flow: column;
+}
+
+/* Info-form */
+@import url(./__info-form/profile__info-form.css);
+
+/* Info-section */
+@import url(./__info-section/profile__info-section.css);
+
+/* Section-name */
+@import url(./__section-name/profile__section-name.css);
+
+/* Welcome */
+@import url(./__welcome/profile__welcome.css);
+
+/* Input */
+@import url(./__input/profile__input.css);
+
+/* Button */
+@import url(./__button/profile__button.css);
+
+/* Button entitites */
+@import url(./__button/_action/profile__button_logout.css);
+@import url(./__button/_action/profile__button_redact.css);
+
+/* Separator */
+@import url(./__section-separator/profile__section-separator.css);

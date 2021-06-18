@@ -1,0 +1,9 @@
+.auth-form__button_signup {
+  margin-top: 266px;
+}
+
+@media only screen and (min-width: 768px) {
+  .auth-form__button_signup {
+    margin-top: 180px;
+  }
+}

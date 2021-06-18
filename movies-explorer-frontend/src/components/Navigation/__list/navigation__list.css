@@ -1,0 +1,13 @@
+.navigation__list {
+  padding: 0;
+  flex-flow: column;
+  display: flex;
+  margin: 144px auto 421px auto;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .navigation__list {
+    margin: 160px auto 595px auto;
+  }
+}

@@ -1,0 +1,12 @@
+.filter-checkbox__surrounding-border {
+  border: none;
+  appearance: none;
+  background: url(../../../../images/Card/tumbler-circle.svg) no-repeat;
+  width: 36px;
+  height: 20px;
+  border-radius: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  margin: 1px;
+}
