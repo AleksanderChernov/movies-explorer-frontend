@@ -15,6 +15,7 @@
 
 .auth-form__input:focus {
   background-color: #4285F4;
+  outline: 1px solid darkblue;
 }
 
 @media only screen and (min-width: 768px) {

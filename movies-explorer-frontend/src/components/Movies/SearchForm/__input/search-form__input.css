@@ -25,5 +25,6 @@
 
 .search-form__input:focus {
   background-color: #26354d;
+  outline: 1px solid rgba(66, 133, 244, 1);
   color: white;
 }
