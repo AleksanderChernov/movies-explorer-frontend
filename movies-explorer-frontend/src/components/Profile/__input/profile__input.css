@@ -11,17 +11,11 @@
   text-align: right;
 }
 
+.profile__input:focus {
+  background-color: #26354d;
+}
+
 .profile__input::placeholder {
   color: white;
   opacity: 1;
-}
-
-@media only screen and (min-width: 768px) {
-  .profile__input {
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  .profile__input {
-  }
 }

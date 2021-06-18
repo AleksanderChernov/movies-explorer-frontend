@@ -22,3 +22,8 @@
     font-size: 14px;
   }
 }
+
+.search-form__input:focus {
+  background-color: #26354d;
+  color: white;
+}

@@ -49,6 +49,7 @@ function AuthForm(props) {
       : "auth-form__button"}
       `} 
       type='submit'>{props.button}</button>
+      {props.children}
       <Route exact path='/signin'>
         <div className="auth-form__footer">
           <p className="auth-form__dynamic">Ещё не зарегистрированы?</p>
