@@ -4,6 +4,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 17px 4.1% 0;
+  position: relative;
 }
 
 @media only screen and (min-width: 768px) {

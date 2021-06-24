@@ -2,6 +2,7 @@
   display: flex;
   flex-flow: column;
   background-color: rgba(32, 32, 32, 1);
+  position: relative;
 }
 
 /* Copyright */

@@ -28,8 +28,8 @@ function Navigation(props) {
           }`}>Сохраненные фильмы</Link>
         </ul>
         <div className="navigation__account-block">
-            <Link className="navigation__account-link" to="/profile">Аккаунт</Link>
-            <Link to="/profile">
+            <Link className="navigation__account-link" onClick={props.onClose}  to="/profile">Аккаунт</Link>
+            <Link to="/profile" onClick={props.onClose} >
               <img className="navigation__account-logo" src={logo} alt="Лого аккаунта"></img>
             </Link>
         </div>

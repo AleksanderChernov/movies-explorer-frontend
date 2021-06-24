@@ -1,0 +1,17 @@
+.error__title {
+  align-items: center;
+  position: absolute;
+  background-color: rgba(32, 32, 32, 0.8);
+  z-index: 5;
+  display: inline-flex;
+  transition: visibility .5s, opacity .5s linear;
+  display: flex;
+  justify-content: center;
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 25px;
+  text-decoration: none;
+}

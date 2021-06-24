@@ -8,7 +8,7 @@ function AuthForm(props) {
   const currentRoute = props.history.location.pathname;
 
   return(
-    <form className="auth-form">
+    <form className="auth-form" onSubmit={props.onSubmit}>
       <div className="auth-form__header">
         <Link to="/">
           <img className="auth-form__logo" src={logo} alt="Лого проекта"></img>
@@ -23,6 +23,7 @@ function AuthForm(props) {
           name="name"  
           placeholder=""
           type="name"
+          onChange={props.onChange}
           required
         />
         </>) : ''}
@@ -32,6 +33,7 @@ function AuthForm(props) {
           name="email"  
           placeholder=""
           type="email"
+          onChange={props.onChange}
           required
         />
         <p className="auth-form__input-title">Пароль</p>
@@ -40,6 +42,7 @@ function AuthForm(props) {
           name="password" 
           placeholder=""
           type="password"
+          onChange={props.onChange}
           required
         />
       </div>
@@ -48,7 +51,8 @@ function AuthForm(props) {
       ? "auth-form__button auth-form__button_signup" 
       : "auth-form__button"}
       `} 
-      type='submit'>{props.button}</button>
+      type='submit'
+      >{props.button}</button>
       {props.children}
       <Route exact path='/signin'>
         <div className="auth-form__footer">

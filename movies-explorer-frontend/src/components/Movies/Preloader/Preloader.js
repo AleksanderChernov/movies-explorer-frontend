@@ -1,13 +1,17 @@
 import React from 'react'
 import './Preloader.css'
+import { useEffect, useState } from "react";
 
-const Preloader = () => {
+const Preloader = (props) => {
+
     return (
-        <div className="preloader">
+        props.preloaderActive 
+        ? <div className="preloader">
             <div className="preloader__container">
                 <span className="preloader__round"></span>
             </div>
-        </div>
+          </div>
+        : ''
     )
 };
 

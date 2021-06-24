@@ -34,8 +34,8 @@ function Header(props) {
               </div>
             </div>)
           : (<div className="header__auth-container">
-            <a className="header__registration" href="/sign-in">Регистрация</a>
-            <a className="header__authorization" href="/sign-up">Войти</a>
+            <a className="header__registration" href="/signup">Регистрация</a>
+            <a className="header__authorization" href="/signin">Войти</a>
           </div>)}
       </header>
     )

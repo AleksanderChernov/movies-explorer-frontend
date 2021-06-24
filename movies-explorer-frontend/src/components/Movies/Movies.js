@@ -5,50 +5,36 @@ import MoviesCardList from './MoviesCardList/MoviesCardList.js';
 import MoviesCard from './MoviesCard/MoviesCard.js';
 import More from './More/More.js';
 
-import pic1 from '../../images/Card-Placeholders/pic1.png';
-import pic2 from '../../images/Card-Placeholders/pic2.png';
-import pic3 from '../../images/Card-Placeholders/pic3.png';
-import pic4 from '../../images/Card-Placeholders/pic4.png';
-import pic5 from '../../images/Card-Placeholders/pic5.png';
-import pic6 from '../../images/Card-Placeholders/pic6.png';
-import pic7 from '../../images/Card-Placeholders/pic7.png';
-import pic8 from '../../images/Card-Placeholders/pic8.png';
-import pic9 from '../../images/Card-Placeholders/pic9.png';
-import pic10 from '../../images/Card-Placeholders/pic10.png';
-import pic11 from '../../images/Card-Placeholders/pic11.png';
-import pic12 from '../../images/Card-Placeholders/pic12.png';
-import pic13 from '../../images/Card-Placeholders/pic13.png';
-import pic14 from '../../images/Card-Placeholders/pic14.png';
-import pic15 from '../../images/Card-Placeholders/pic15.png';
-import pic16 from '../../images/Card-Placeholders/pic16.png';
-
-
 export default function Movies(props) {
-
   const movieList = true;
+  const increaseAmount = 4;
+
+  const [chosenAmount, setChosenAmount] = React.useState(12);
+
+  function showMore() {
+    return setChosenAmount(chosenAmount + increaseAmount);
+  }
 
   return (
     <section className="movies">
-      <SearchForm checkboxClicked={props.checkboxClicked} isCheckboxOn={props.isCheckboxOn}/>
-      <MoviesCardList>
-        <MoviesCard movieList={movieList} image={pic1}/>
-        <MoviesCard movieList={movieList} image={pic2}/>
-        <MoviesCard movieList={movieList} image={pic3}/>
-        <MoviesCard movieList={movieList} image={pic4}/>
-        <MoviesCard movieList={movieList} image={pic5}/>
-        <MoviesCard movieList={movieList} image={pic6}/>
-        <MoviesCard movieList={movieList} image={pic7}/>
-        <MoviesCard movieList={movieList} image={pic8}/>
-        <MoviesCard movieList={movieList} image={pic9}/>
-        <MoviesCard movieList={movieList} image={pic10}/>
-        <MoviesCard movieList={movieList} image={pic11}/>
-        <MoviesCard movieList={movieList} image={pic12}/>
-        <MoviesCard movieList={movieList} image={pic13}/>
-        <MoviesCard movieList={movieList} image={pic14}/>
-        <MoviesCard movieList={movieList} image={pic15}/>
-        <MoviesCard movieList={movieList} image={pic16}/>
+      <SearchForm
+        isSearchWordEntered={props.isSearchWordEntered}
+        checkboxClicked={props.checkboxClicked} 
+        isCheckboxOn={props.isCheckboxOn} 
+        setSearchWord={props.setSearchWord}
+      />        
+      <MoviesCardList searchWord={props.searchWord}
+        searchWordState={props.searchWordState} 
+        preloaderActive={props.preloaderActive}
+        moviesAmount={props.movies.length}
+      >
+        {props.searchWord.length > 0 && props.movies.slice(0, chosenAmount).map((item) => (
+          <MoviesCard movieList={movieList} key={item.nameRU} movie={item}/>)
+        )}
       </MoviesCardList>
-      <More/>
+      {props.movies.length > chosenAmount && props.searchWordState && props.searchWord.length > 0 && 
+        <More showMore={showMore}
+      />}
     </section>
   )
 }
