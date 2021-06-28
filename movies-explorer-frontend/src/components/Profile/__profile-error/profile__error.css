@@ -1,0 +1,11 @@
+.profile__error {
+  display: flex;
+  color: red;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 17px;
+  line-height: 16px;
+  align-items: center;
+  justify-content: center;
+}

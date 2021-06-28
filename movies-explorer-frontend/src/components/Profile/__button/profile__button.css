@@ -17,7 +17,7 @@
   transition: opacity .35s ease-in-out;
 }
 
-.profile__button:nth-child(2n) {
+.profile__button:nth-child(4n) {
   margin-bottom: 40px;
 }
 
@@ -25,10 +25,6 @@
   .profile__button {
     font-size: 13px;
     line-height: 15.73px;
-  }
-  
-  .profile__button:nth-child(2n) {
-    margin-bottom: 340px;
   }
 }
 
