@@ -103,13 +103,14 @@ function AuthForm(props) {
         />
        { hasErrorPass && <p className="auth-form__error auth-form__error_visible">{errorPassMessage}</p>}
       </div>
-      <button className={`${
-      currentRoute ==="/signin" 
-      ? "auth-form__button auth-form__button_signup" 
-      : "auth-form__button"}
-      `} 
-      type='submit'
-      >{props.button}</button>
+      {hasErrorName === false && hasErrorMail === false && hasErrorPass === false ? 
+        <button className={`${currentRoute ==="/signin" ? "auth-form__button auth-form__button_signup"
+        : "auth-form__button"}`} 
+        type={ hasErrorName === false && hasErrorMail === false && hasErrorPass === false && "submit"}
+        >{props.button}</button> 
+        : <button className={"auth-form__button auth-form__button_signup_locked"}>
+          Проверьте правильность условий
+        </button>}
       {props.children}
       <Route exact path='/signin'>
         <div className="auth-form__footer">

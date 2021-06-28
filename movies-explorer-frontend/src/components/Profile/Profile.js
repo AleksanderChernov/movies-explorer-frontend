@@ -119,7 +119,16 @@ export default function Profile(props) {
         </div>
         { hasErrorName && <p className="profile__error">{errorNameMessage}</p>}
         { hasErrorMail && <p className="profile__error">{errorMailMessage}</p>}
-        <button className={`profile__button profile__button_redact ${hasErrorName || hasErrorMail ? 'profile__button_locked' : ''}`} type={ hasErrorName === false && hasErrorMail === false && "submit"}>Редактировать</button>
+        { hasErrorName || hasErrorMail 
+        ? 
+        <p className='profile__button profile__button_redact profile__button_locked'
+          type="submit">
+            Проверьте правильность данных
+          </p> 
+        : <button className='profile__button profile__button_redact' type="submit">
+            Редактировать
+          </button>
+        }
         <button className="profile__button profile__button_logout" onClick={onSignOut}>Выйти из аккаунта</button>
       </form>
       <InfoTooltip message={message} isOpen={isInfoTooltipOpen} isSuccessful={success}/>

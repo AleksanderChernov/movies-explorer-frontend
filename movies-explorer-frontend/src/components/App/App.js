@@ -56,6 +56,7 @@ function App() {
   }
 
   function searchForSaved() {
+    setPreloader(true)
     const token = localStorage.getItem('token');
       MainApi.getSavedMovies(token)
         .then((res)=> {
@@ -65,6 +66,7 @@ function App() {
             return []
           }
         }).then((res) => {
+        setPreloader(false)
         setSavedMovies(res) 
         setFilteredSavedMovies(res)
       })

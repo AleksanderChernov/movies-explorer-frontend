@@ -1,4 +1,7 @@
 .profile__button_locked {
   color: red;
   cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

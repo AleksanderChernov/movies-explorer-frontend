@@ -2,6 +2,10 @@
   margin-top: 266px;
 }
 
+.auth-form__button_signup_locked {
+  background-color: red;
+}
+
 @media only screen and (min-width: 768px) {
   .auth-form__button_signup {
     margin-top: 180px;
