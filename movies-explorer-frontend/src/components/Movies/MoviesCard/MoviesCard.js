@@ -1,31 +1,57 @@
 import './MoviesCard.css';
 import React from "react";
-export default function MoviesCard(props) {
+import { withRouter } from 'react-router-dom';
 
-  const [isSaved, setSaved] = React.useState(false);
 
-    const toggle = React.useCallback(() => {
-      setSaved(v => !v);
-    }, []);
+function MoviesCard(props) {
+
+  const isSaved = props.savedMoviesId.indexOf(props.movie.id) !== -1;
+
+  const handleSave = () => {
+    props.handleSave(props.movie)
+  }
+
+  const handleDelete = () => {
+    props.handleDelete(props.movie)
+  }
+
+  const handleDeleteWithoutHex = () => {
+    props.handleDeleteWithoutHex(props.movie)
+  }
+
+  const currentRoute = props.history.location.pathname;
 
   return(
     <article className="movies-card">
-      <img className="movies-card__image" src={`https://api.nomoreparties.co${props.movie.image.url}`} alt={props.movie.image.alt}/>
+      <img className="movies-card__image" src={`https://api.nomoreparties.co${
+        props.movie.image.url || props.movie.image}
+      `} alt={props.movie.image.alt}/>
       <div className="movies-card__info-block">
         <div className="movies-card__title-length-column">
           <a className="movies-card__title" 
             target="_blank" 
             rel="noopener noreferrer"  
-            href={props.movie.trailerLink}>{props.movie.nameRU}</a>
+            href={props.movie.trailerLink || props.movie.trailer}>{props.movie.nameRU}</a>
           <p className="movies-card__length">{props.movie.duration}</p>
         </div>
-        {props.movieList 
-        ? <button className={`${isSaved 
-          ? 'movies-card__button movies-card__button_saved' 
-          : 'movies-card__button' }`} type="checkbox" onClick={toggle} 
-          />
-        : <button className={`${ 'movies-card__delete' }`} type="checkbox"/>}
+        {props.movieList && isSaved && 
+          <button className={`${'movies-card__button movies-card__button_saved'}`} 
+          type="checkbox" 
+          onClick={handleDeleteWithoutHex}
+        />}
+        {props.movieList && isSaved === false &&
+          <button className={`${'movies-card__button' }`} 
+          type="checkbox" 
+          onClick={handleSave} 
+        />}
+        {props.isSavedList && currentRoute === '/saved-movies' && 
+          <button className={`${ 'movies-card__delete' }`} 
+          type="checkbox" 
+          onClick={handleDelete}
+        />}
       </div>
     </article>
   )
 }
+
+export default withRouter(MoviesCard)

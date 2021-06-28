@@ -3,6 +3,7 @@ import {  useHistory, withRouter } from "react-router-dom";
 import AuthForm from '../AuthForm/AuthForm.js';
 import MainApi from '../../utils/MainApi.js';
 import InfoTooltip from '../InfoTooltip/InfoTooltip.js';
+import Preloader from '../Movies/Preloader/Preloader'
 import './Register.css';
 
 function Register(props) {
@@ -22,24 +23,32 @@ function Register(props) {
   }
 
   function handleSubmit(e){
+    props.togglePreloader(true)
     e.preventDefault()
     MainApi.register(registerInfo)
     .then((res)=>{
       if(res) {
+        props.togglePreloader(false)
         setMessage('Успех!');
         setSuccess(true)
         makePopupVisible(true)
-        setTimeout(()=> {
-          history.push('/signin');
+        MainApi.login(registerInfo)
+        .then((res)=>{
+          props.handleLogin();
+          localStorage.setItem('token', res.token);
+          setTimeout(()=> {
+          history.push('/movies');
           makePopupVisible(false)
-        }, 2000)
+        }, 6000)
+        })
       } else {
+        props.togglePreloader(false)
         setMessage('Что-то пошло не так');
         setSuccess(false)
         makePopupVisible(true)
         setTimeout(()=> {
           makePopupVisible(false)
-        }, 2000)
+        }, 4000)
       }
     });
   }
@@ -47,10 +56,11 @@ function Register(props) {
   return(
     <AuthForm 
       title={'Добро пожаловать!'} 
-      button={'Зарегистрироваться'} 
+      button={'Зарегистрироваться'}
       onSubmit={handleSubmit} 
-      onChange={handleChange}>
+      handleChange={handleChange}>
       <InfoTooltip message={message} isOpen={isInfoTooltipOpen} isSuccessful={success}/>
+      <Preloader preloaderActive={props.preloaderActive}/>
     </AuthForm>
   )
 }

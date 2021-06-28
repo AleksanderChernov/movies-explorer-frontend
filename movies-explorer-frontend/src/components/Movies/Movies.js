@@ -1,5 +1,5 @@
 import './Movies.css';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm/SearchForm.js';
 import MoviesCardList from './MoviesCardList/MoviesCardList.js';
 import MoviesCard from './MoviesCard/MoviesCard.js';
@@ -7,13 +7,42 @@ import More from './More/More.js';
 
 export default function Movies(props) {
   const movieList = true;
-  const increaseAmount = 4;
 
-  const [chosenAmount, setChosenAmount] = React.useState(12);
+  const [chosenAmount, setChosenAmount] = React.useState(undefined);
+  const [windowWidth, setWindowSize] = useState(undefined);
+  const [addAmount, setIncreasedAmount] = React.useState(undefined);
 
   function showMore() {
-    return setChosenAmount(chosenAmount + increaseAmount);
+    return setChosenAmount(chosenAmount + addAmount);
   }
+
+  useEffect(() => {
+    props.searchForSaved()
+  }, [])
+
+  useEffect(() => {
+    setTimeout(()=>{
+      function handleResize() {
+        setWindowSize(window.innerWidth);
+      }
+
+      window.addEventListener("resize", handleResize);
+      handleResize();
+
+      if (windowWidth >= 1280) {
+        setChosenAmount(12)
+        setIncreasedAmount(4)
+      } else if (windowWidth >= 768 && windowWidth < 1280) {
+        setChosenAmount(8)
+        setIncreasedAmount(2)
+      } else if (windowWidth > 320 && windowWidth < 480) {
+        setChosenAmount(5)
+        setIncreasedAmount(2)
+      }
+
+      return() => window.removeEventListener("resize", handleResize);
+    }, 2000)
+  }, [windowWidth]);
 
   return (
     <section className="movies">
@@ -22,14 +51,25 @@ export default function Movies(props) {
         checkboxClicked={props.checkboxClicked} 
         isCheckboxOn={props.isCheckboxOn} 
         setSearchWord={props.setSearchWord}
+        savedMoviesPath={props.savedMoviesPath}
       />        
-      <MoviesCardList searchWord={props.searchWord}
+      <MoviesCardList 
+        error={props.error}
+        searchWord={props.searchWord}
         searchWordState={props.searchWordState} 
         preloaderActive={props.preloaderActive}
         moviesAmount={props.movies.length}
       >
         {props.searchWord.length > 0 && props.movies.slice(0, chosenAmount).map((item) => (
-          <MoviesCard movieList={movieList} key={item.nameRU} movie={item}/>)
+          <MoviesCard 
+            handleDeleteWithoutHex={props.handleDeleteWithoutHex}
+            savedMoviesId={props.savedMoviesId}
+            movieList={movieList} 
+            key={item.nameRU} 
+            movie={item} 
+            handleSave={props.handleSave}
+            handleDelete={props.handleDelete}
+          />)
         )}
       </MoviesCardList>
       {props.movies.length > chosenAmount && props.searchWordState && props.searchWord.length > 0 && 

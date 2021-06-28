@@ -1,11 +1,62 @@
 import './AuthForm.css';
 import logo from "../../images/Header/header-logo.svg"
 import { Link } from "react-router-dom";
-import {Route, withRouter} from 'react-router-dom';
+import { Route, withRouter } from 'react-router-dom';
+import { useState } from 'react';
+import { nameRegex, emailRegex } from '../../utils/FormValidation';
 
 function AuthForm(props) {
 
   const currentRoute = props.history.location.pathname;
+
+  const [hasErrorName, setHasErrorName] = useState(false)
+  const [hasErrorMail, setHasErrorMail] = useState(false)
+  const [hasErrorPass, setHasErrorPass] = useState(false)
+  const [errorNameMessage, setErrorNameMessage] = useState('')
+  const [errorMailMessage, setErrorMailMessage] = useState('')
+  const [errorPassMessage, setErrorPassMessage] = useState('')
+  const [name, setName] = useState('')
+  const [mail, setMail] = useState('')
+  const [password, setPassword] = useState('')
+
+  function validateEmail(event) {
+    const newMail = event.target.value;
+    setMail(newMail)
+    const isValid = emailRegex.test(newMail)
+    if (isValid) {
+      setHasErrorMail(false)
+      setErrorMailMessage('')
+    } else {
+      setHasErrorMail(true)
+      setErrorMailMessage('e-mail должен быть валиден')
+    }
+  }
+
+  function validatePassword(event) {
+    const newPass = event.target.value;
+    setPassword(newPass)
+    const isValid = newPass.length > 0
+    if (isValid) {
+      setHasErrorPass(false)
+      setErrorPassMessage('')
+    } else {
+      setHasErrorPass(true)
+      setErrorPassMessage('Пароль необходим')
+    }
+  }
+
+  function validateName(event) {
+    const newName = event.target.value;
+    setName(newName)
+    const isValid = nameRegex.test(newName)
+    if (isValid) {
+      setHasErrorName(false)
+      setErrorNameMessage('')
+    } else {
+      setHasErrorName(true)
+      setErrorNameMessage('Имя должно быть заполнено и не иметь особых знаков/цифр')
+    }
+  }
 
   return(
     <form className="auth-form" onSubmit={props.onSubmit}>
@@ -23,9 +74,11 @@ function AuthForm(props) {
           name="name"  
           placeholder=""
           type="name"
-          onChange={props.onChange}
+          onChange={e => { validateName(e); props.handleChange(e) }}
           required
+          value={name}
         />
+       { hasErrorName && <p className="auth-form__error auth-form__error_visible">{errorNameMessage}</p>}
         </>) : ''}
         <p className="auth-form__input-title">E-mail</p>
         <input className="auth-form__input auth-form__input_email"
@@ -33,18 +86,22 @@ function AuthForm(props) {
           name="email"  
           placeholder=""
           type="email"
-          onChange={props.onChange}
+          onChange={e => { validateEmail(e); props.handleChange(e)}}
           required
+          value={mail}
         />
+        { hasErrorMail && <p className="auth-form__error auth-form__error_visible">{errorMailMessage}</p>}
         <p className="auth-form__input-title">Пароль</p>
         <input className="auth-form__input auth-form__input_password"
           id="password" 
           name="password" 
           placeholder=""
           type="password"
-          onChange={props.onChange}
+          onChange={e => { validatePassword(e); props.handleChange(e)}}
           required
+          value={password}
         />
+       { hasErrorPass && <p className="auth-form__error auth-form__error_visible">{errorPassMessage}</p>}
       </div>
       <button className={`${
       currentRoute ==="/signin" 

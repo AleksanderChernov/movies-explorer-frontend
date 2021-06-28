@@ -25,6 +25,12 @@
 /* Input-block */
 @import url(./__input-block/auth-form__input-block.css);
 
+/* Error */
+@import url(./__error/auth-form__error.css);
+
+/* Error - visible */
+@import url(./__error/_visible/auth-form__error_visible.css);
+
 /* Input */
 @import url(./__input/auth-form__input.css);
 

@@ -1,13 +1,22 @@
 import './Profile.css';
 import { useHistory } from 'react-router-dom';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext.js';
+import InfoTooltip from '../InfoTooltip/InfoTooltip.js';
+import Preloader from '../../components/Movies/Preloader/Preloader';
 import React from 'react';
 
 export default function Profile(props) {
 
-  const currentUser = React.useContext(CurrentUserContext);;
+  const currentUser = React.useContext(CurrentUserContext);
+  const [isInfoTooltipOpen, setInfoTooltip] = React.useState(false);
   const [email, setEmail] = React.useState('');
   const [name, setName] = React.useState('');
+  const [message, setMessage] = React.useState('');
+  const [success, setSuccess] = React.useState(false);
+
+  function makePopupVisible(state) {
+    setInfoTooltip(state)
+  }
 
   React.useEffect(() => {
     setName(currentUser.name);
@@ -28,7 +37,13 @@ export default function Profile(props) {
     props.onUpdateUser({
       name,
       email: email,
-    });
+    })
+    setMessage('Данные изменены');
+    setSuccess(true)
+    makePopupVisible(true)
+    setTimeout(()=> {
+      makePopupVisible(false)
+    }, 2000)
   } 
 
   const history = useHistory();
@@ -65,6 +80,8 @@ export default function Profile(props) {
         <button className="profile__button profile__button_redact" type="submit">Редактировать</button>
         <button className="profile__button profile__button_logout" onClick={onSignOut}>Выйти из аккаунта</button>
       </form>
+      <InfoTooltip message={message} isOpen={isInfoTooltipOpen} isSuccessful={success}/>
+      <Preloader preloaderActive={props.preloaderActive}/>
     </section>
   )
 }

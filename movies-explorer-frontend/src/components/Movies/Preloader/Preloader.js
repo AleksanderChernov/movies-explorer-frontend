@@ -1,6 +1,5 @@
 import React from 'react'
 import './Preloader.css'
-import { useEffect, useState } from "react";
 
 const Preloader = (props) => {
 

@@ -1,10 +1,13 @@
 import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 import React from 'react';
 import './SearchForm.css';
+import { withRouter } from 'react-router-dom';
 
-export default function SearchForm(props) {
+function SearchForm(props) {
 
   const [word, setWord] = React.useState('');
+
+  const currentRoute = props.history.location.pathname;
 
   function setSearch(e) {
     setWord(e.target.value);
@@ -12,6 +15,9 @@ export default function SearchForm(props) {
 
   function handleSubmit(e) {
     e.preventDefault();
+    if (currentRoute === '/saved-movies') {
+      props.savedMoviesPath(true)
+    }
     props.setSearchWord(word);
     props.isSearchWordEntered(true);
   }
@@ -36,3 +42,4 @@ export default function SearchForm(props) {
     </section>
   )
 }
+export default withRouter(SearchForm)

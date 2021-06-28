@@ -111,6 +111,53 @@ class Api {
     }).then(this._checkResponse)
   }
 
+  saveCard(movie, token) {
+    return fetch(`${this.BASE_URL}movies`, {
+      method: "POST",
+      'credentials': 'include',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : token
+      },
+      body: JSON.stringify({
+        country: movie.country ? movie.country : ``,
+        director: movie.director ? movie.director : ``,
+        duration: movie.duration ? movie.duration : ``,
+        year: movie.year ? movie.year : ``,
+        description: movie.description ? movie.description : ``,
+        image: movie.image.url ? movie.image.url : ``,
+        trailer: movie.trailerLink ? movie.trailerLink : ``,
+        nameRU: movie.nameRU ? movie.nameRU : movie.nameEN,
+        nameEN: movie.nameEN ? movie.nameEN : movie.nameRU,
+        thumbnail : movie.image.formats.thumbnail.url ? movie.image.formats.thumbnail.url : ``,
+        movieId: movie.id ? movie.id : ``,
+      })
+    }).then(this._checkResponse)
+  }
+
+  getSavedMovies(token) {
+    return fetch(`${this.BASE_URL}movies`, {
+      method: "GET",
+      'credentials': 'include',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : token
+      },
+    })
+  }
+
+  deleteFilm(id, token) {
+    return fetch(`${this.BASE_URL}movies/${id}`, {
+      method: "DELETE",
+      'credentials': 'include',
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization" : token
+      },
+    }).then(this._checkResponse)
+  }
+
+
 } 
 const MainApi = new Api();
 export default MainApi;
