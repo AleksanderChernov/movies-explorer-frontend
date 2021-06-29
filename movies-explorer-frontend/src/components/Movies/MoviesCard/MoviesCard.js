@@ -21,6 +21,17 @@ function MoviesCard(props) {
 
   const currentRoute = props.history.location.pathname;
 
+  const convertedTime = timeConverter(props.movie.duration)
+
+  console.log(convertedTime)
+
+  function timeConverter(num)
+  { 
+  var hours = Math.floor(num / 60);  
+  var minutes = num % 60;
+  return hours + " ч " + minutes + " мин";         
+  }
+
   return(
     <article className="movies-card">
       <img className="movies-card__image" src={`https://api.nomoreparties.co${
@@ -32,7 +43,7 @@ function MoviesCard(props) {
             target="_blank" 
             rel="noopener noreferrer"  
             href={props.movie.trailerLink || props.movie.trailer}>{props.movie.nameRU}</a>
-          <p className="movies-card__length">{props.movie.duration}</p>
+          <p className="movies-card__length">{convertedTime}</p>
         </div>
         {props.movieList && isSaved && 
           <button className={`${'movies-card__button movies-card__button_saved'}`} 
