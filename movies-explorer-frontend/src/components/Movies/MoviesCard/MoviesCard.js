@@ -23,8 +23,6 @@ function MoviesCard(props) {
 
   const convertedTime = timeConverter(props.movie.duration)
 
-  console.log(convertedTime)
-
   function timeConverter(num)
   { 
   var hours = Math.floor(num / 60);  

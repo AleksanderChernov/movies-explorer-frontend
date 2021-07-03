@@ -88,7 +88,6 @@ class Api {
   updateUserInfo ({name, email}, token) {
       return fetch(`${this.BASE_URL}users/me`, {
         method: 'PATCH',
-        'credentials': 'include',
         headers: {
           "Content-Type": "application/json",
           "Authorization" : token
@@ -107,14 +106,12 @@ class Api {
         "Authorization" : token
       },
       method: "GET",
-      'credentials': 'include',
     }).then(this._checkResponse)
   }
 
   saveCard(movie, token) {
     return fetch(`${this.BASE_URL}movies`, {
       method: "POST",
-      'credentials': 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : token
@@ -138,7 +135,6 @@ class Api {
   getSavedMovies(token) {
     return fetch(`${this.BASE_URL}movies`, {
       method: "GET",
-      'credentials': 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : token
@@ -149,7 +145,6 @@ class Api {
   deleteFilm(id, token) {
     return fetch(`${this.BASE_URL}movies/${id}`, {
       method: "DELETE",
-      'credentials': 'include',
       headers: {
         "Content-Type": "application/json",
         "Authorization" : token

@@ -87,6 +87,7 @@ export default function Profile(props) {
   function onSignOut(){
     props.setLoggedIn(false)
     localStorage.removeItem('token');
+    localStorage.clear();
     history.push('/');
   }
 
@@ -121,7 +122,7 @@ export default function Profile(props) {
         { hasErrorMail && <p className="profile__error">{errorMailMessage}</p>}
         { hasErrorName || hasErrorMail 
         ? 
-        <p className='profile__button profile__button_redact profile__button_locked'
+        <p className='profile__button profile__button_locked'
           type="submit">
             Проверьте правильность данных
           </p> 

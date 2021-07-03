@@ -77,32 +77,58 @@ function App() {
   }, [savedMovies])
 
   const getMoviesFiltered = useCallback(async(word) => {
+    console.log('it works')
+    debugger
     if (isSavedMoviesRequest === false) {
       const parsedMovies = JSON.parse(localStorage.getItem('ReceivedMovies'));
-      if (isCheckboxOn) {
-      const filtered = parsedMovies.filter((films) =>
-        films.nameRU.toLowerCase().includes(word.toLowerCase())
+      console.log(parsedMovies);
+      if (isCheckboxOn === false) {
+      const filtered = parsedMovies.filter((films, i, arr) => {
+        const filmRUname = films.nameRU.toLowerCase()
+        const searchWord = word.toLowerCase()
+        return filmRUname.includes(searchWord)
+      }
       );
+      localStorage.setItem('setWord', JSON.stringify(word))
       setFilteredResults(filtered);
+      console.log(filtered + 'checkbox off обычные')
+      console.log(JSON.stringify(filtered))
+      localStorage.setItem('lastSearched', JSON.stringify(filtered));
+      togglePreloader(false)
     } else {
       const filtered = parsedMovies.filter((films) => 
-        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration >= 40 
+        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40 
       );
+      localStorage.setItem('setWord', JSON.stringify(word))
       setFilteredResults(filtered);
+      console.log(filtered + 'checkbox on обычные')
+      console.log(JSON.stringify(filtered))
+      localStorage.setItem('lastSearched', JSON.stringify(filtered));
+      togglePreloader(false)
       }
     } else {
-      if (isCheckboxOn) {
+      if (isCheckboxOn === false) {
         const filtered = savedMovies.filter((films) =>
         films.nameRU.toLowerCase().includes(word.toLowerCase())
       );
+      localStorage.setItem('setWord', JSON.stringify(word))
       setFilteredSavedMovies(filtered);
+      console.log(filtered + 'checkbox off сохраненные')
+      console.log(JSON.stringify(filtered))
+      localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
       setSavedAdress(false)
+      togglePreloader(false)
       } else {
         const filtered = savedMovies.filter((films) => 
-        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration >= 40 
+        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40 
       );
+      localStorage.setItem('setWord', word)
       setFilteredSavedMovies(filtered);
+      console.log(filtered + 'checkbox on сохраненные')
+      console.log(JSON.stringify(filtered))
+      localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
       setSavedAdress(false)
+      togglePreloader(false)
       }
     }
   }, [isSavedMoviesRequest, isCheckboxOn, searchWord])
@@ -113,7 +139,7 @@ function App() {
 
   useEffect(() => {
     activateSearch();
-    togglePreloader(true);
+    /* togglePreloader(true); */
   }, [activateSearch, searchWord, isSavedMoviesRequest])
 
   function handleDeleteWithoutHex(movie) {
@@ -128,6 +154,24 @@ function App() {
       setPreloader(false)
     })
   }
+
+  useEffect(()=>{
+    try {
+      const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || [];
+      const lastSearched = JSON.parse(localStorage.getItem('lastSearched')) || [];
+      const word = localStorage.getItem('setWord');
+      setSearchWordState(true);
+      setSearchWord(word);
+      setFilteredSavedMovies(lastSearchedSaved);
+      setFilteredResults(lastSearched);
+      /* console.log(filteredResults); */
+      console.log(filteredSavedMovies);
+      console.log(lastSearchedSaved);
+      /* console.log(lastSearched); */
+    } catch(e) {
+      console.log(e)
+    } 
+  }, [])
 
   function handleDelete(movie) {
     setPreloader(true)
@@ -154,7 +198,7 @@ function App() {
         setError(true)
       }
     })
-    .catch((err)=> {console.log(err)},/*   */)
+    .catch((err)=> {console.log(err)})
     .finally(()=>{setPreloader(false)})
   }
 
@@ -173,6 +217,7 @@ function App() {
           history.push('/movies')
         } else {
           localStorage.removeItem('token');
+          localStorage.clear()
         };
       });
     };   
