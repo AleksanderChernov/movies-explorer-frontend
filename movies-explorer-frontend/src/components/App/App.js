@@ -206,24 +206,29 @@ function App() {
       setPreloader(true);
       const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || [];
       const lastSearched = JSON.parse(localStorage.getItem('lastSearched')) || [];
-      const lastSearchWord = localStorage.getItem('setWord') || '';
-      console.log(lastSearchedSaved)
+      const lastSearchWord = localStorage.getItem('setWord');
       console.log(lastSearched)
       console.log(lastSearchWord)
-      if (lastSearchedSaved.length && lastSearchWord.length) {
+      if (lastSearchedSaved.length && lastSearchWord.length && lastSearchWord !== '') {
         /* setIsFiltering(true); */
+        console.log('выполняю')
         setIsReturning(true)
         setFilteredSavedMovies(lastSearchedSaved);
         setPreloader(false)
       } else {
+        setIsReturning(true)
         setFilteredSavedMovies([])
+        console.log('выполняю 2')
         setPreloader(false)
       }
-      if (lastSearched.length && lastSearchWord.length) {
+      if (lastSearched.length) {
         setIsReturning(true)
+        console.log('выполняю 3')
         setFilteredResults(lastSearched);
         setPreloader(false)
       } else {
+        setIsReturning(true)
+        console.log('выполняю 4')
         setFilteredResults([])
         setPreloader(false)
       }
@@ -317,7 +322,7 @@ function App() {
               isCheckboxOn={isCheckboxOn} 
               component={Movies}
               isLoggedIn={loggedIn}
-              movies={filteredResults}
+              movies={filteredResults || []}
               searchWord={searchWord}
               isFiltering={isFiltering}
               isSearchWordEntered={isSearchWordEntered}

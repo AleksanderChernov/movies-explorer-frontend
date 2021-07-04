@@ -16,8 +16,10 @@ export default function Movies(props) {
     return setChosenAmount(chosenAmount + addAmount);
   }
 
+  const lastSearchWord = localStorage.getItem('setWord');
+
   useEffect(() => {
-    props.searchForSaved();
+    /* props.searchForSaved(); */
     props.savedMoviesPath(false);
     props.setCheckbox(false);
   }, [])
@@ -63,7 +65,7 @@ export default function Movies(props) {
         preloaderActive={props.preloaderActive}
         moviesAmount={props.movies.length}
       >
-        {props.isReturning ? props.movies.slice(0, chosenAmount).map((item) => (
+        {lastSearchWord.length ? props.movies.slice(0, chosenAmount).map((item) => (
           <MoviesCard 
             handleDeleteWithoutHex={props.handleDeleteWithoutHex}
             savedMoviesId={props.savedMoviesId}
@@ -73,7 +75,7 @@ export default function Movies(props) {
             handleSave={props.handleSave}
             handleDelete={props.handleDelete}
           />)
-        ) : props.movies.slice(0, chosenAmount).map((item) => (
+        ): ''/*  : props.movies.slice(0, chosenAmount).map((item) => (
           <MoviesCard 
             handleDeleteWithoutHex={props.handleDeleteWithoutHex}
             savedMoviesId={props.savedMoviesId}
@@ -83,7 +85,7 @@ export default function Movies(props) {
             handleSave={props.handleSave}
             handleDelete={props.handleDelete}
           />)
-          )}
+          ) */}
       </MoviesCardList>
       {props.movies.length > chosenAmount && 
         <More showMore={showMore}
