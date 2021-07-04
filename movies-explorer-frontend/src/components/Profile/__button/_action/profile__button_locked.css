@@ -1,0 +1,12 @@
+.profile__button_locked {
+  color: red;
+  cursor: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile__button_locked:hover {
+  opacity: 1;
+  cursor: not-allowed;
+}

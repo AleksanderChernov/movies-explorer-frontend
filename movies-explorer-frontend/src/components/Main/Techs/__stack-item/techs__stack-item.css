@@ -1,0 +1,28 @@
+.techs__stack-item {
+  display: flex;
+  align-items: center;
+  width: 84px;
+  height: 57px;
+  margin: 0px;
+  background-color: #303030;
+  border-radius: 10px;
+}
+
+.techs__stack-item:hover {
+  cursor: pointer;
+  opacity: 0.4;
+  transition: opacity .35s ease-in-out;
+}
+
+@media only screen and (min-width: 768px) {
+  .techs__stack-item {
+    background-color: rgb(75, 75, 75);
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .techs__stack-item {
+    width: 90px;
+    height: 60px;
+  }
+}

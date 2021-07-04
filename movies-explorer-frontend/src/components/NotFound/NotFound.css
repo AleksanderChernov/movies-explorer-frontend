@@ -1,0 +1,16 @@
+.not-found {
+  background-color: #202020;
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Title-error */
+@import url(./__title-error/not-found__title-error.css);
+
+/* Error-message */
+@import url(./__error-message/not-found__error-message.css);
+
+/* Button */
+@import url(./__button-back/not-found__button-back.css);

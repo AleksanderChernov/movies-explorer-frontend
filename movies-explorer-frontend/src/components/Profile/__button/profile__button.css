@@ -1,0 +1,30 @@
+.profile__button {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  margin: 0;
+  border: none;
+  background-color: rgba(32, 32, 32, 1);
+  margin-bottom: 16px;
+}
+
+.profile__button:hover {
+  cursor: pointer;
+  opacity: 0.3;
+  transition: opacity .35s ease-in-out;
+}
+
+.profile__button:nth-child(4n) {
+  margin-bottom: 40px;
+}
+
+@media only screen and (min-width: 768px) {
+  .profile__button {
+    font-size: 13px;
+    line-height: 15.73px;
+  }
+}
+

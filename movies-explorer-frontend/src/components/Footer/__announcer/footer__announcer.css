@@ -1,0 +1,22 @@
+.footer__announcer {
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  margin: 129px 3% 0px;
+  text-align: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__announcer {
+    font-size: 13px;
+  } 
+}
+
+@media only screen and (min-width: 1280px) {
+  .footer__announcer {
+    margin: 130px 5.5% 0px;
+  } 
+}

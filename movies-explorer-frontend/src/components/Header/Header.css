@@ -1,0 +1,62 @@
+.header {
+  background-color: rgba(32, 32, 32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 17px 4.1% 0;
+  position: relative;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    align-items: flex-start;
+  } 
+}
+
+@media only screen and (min-width: 1280px) {
+  .header {
+    padding: 0 5.3% 0;
+    align-items: center;
+  } 
+}
+
+.header_beige {
+  background-color: #073042;
+}
+
+
+/* Logo */
+@import url(./__logo/header__logo.css);
+
+/* Auth */
+@import url(./__auth-container/header__auth-container.css);
+
+/* Reg-link */
+@import url(./__registration/header__registration.css);
+
+/* Auth-link */
+@import url(./__authorization/header__authorization.css);
+
+/* Nav */
+@import url(./__nav-container/header__nav-container.css);
+
+/* Burger */
+@import url(./__burger/header__burger.css);
+
+/* Nav links container */
+@import url(./__nav-links-container/header__nav-links-container.css);
+
+/* Nav link */
+@import url(./__nav-link/header__nav-link.css);
+
+/* Nav link bold */
+@import url(./__nav-link/_modified/header__nav-link_bold.css);
+
+/* Profile container */
+@import url(./__profile-container/header__profile-container.css);
+
+/* Profile logo */
+@import url(./__profile-logo/header__profile-logo.css);
+
+/* Auth link */
+@import url(./__auth-link/header__auth-link.css);

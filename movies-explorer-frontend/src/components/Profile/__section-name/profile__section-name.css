@@ -1,0 +1,23 @@
+.profile__section-name {
+  width: 70px;
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin: 0;
+}
+
+
+@media only screen and (min-width: 768px) {
+  .profile__section-name {
+
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .profile__section-name {
+
+  }
+}

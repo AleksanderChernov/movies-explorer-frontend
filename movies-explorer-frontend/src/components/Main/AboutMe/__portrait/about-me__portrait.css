@@ -1,0 +1,27 @@
+.about-me__portrait {
+  display: flex;
+  margin: 60px 5% 0;
+  width: 292px;
+  height: 352px;
+  object-fit: cover;
+  border-radius: 10px;
+  align-self: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-me__portrait {
+    display: flex;
+    width: 255px;
+    height: 307px;
+    margin: 67px 0 0;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-me__portrait {
+    display: flex;
+    width: 270px;
+    height: 327px;
+    margin: 67px 0 0;
+  }
+}

@@ -1,0 +1,20 @@
+.profile__info-section {
+  display: flex;
+  justify-content: space-between;
+}
+
+.profile__info-section:nth-child(4n) {
+  margin-bottom: 375px;
+}
+
+@media only screen and (min-width: 768px) {
+  .profile__info-section:nth-child(4n) {
+    margin-bottom: 206px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .profile__info-section:nth-child(4n) {
+    margin-bottom: 216px;
+  }
+}

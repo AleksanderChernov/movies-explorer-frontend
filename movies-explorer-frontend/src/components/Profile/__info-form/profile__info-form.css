@@ -1,0 +1,17 @@
+.profile__info-form {
+  display: flex;
+  flex-flow: column;
+  margin: 0 9%;
+}
+
+@media only screen and (min-width: 768px) {
+  .profile__info-form {
+    margin: 0 23.4%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .profile__info-form {
+    margin: 0 33.8%;
+  }
+}

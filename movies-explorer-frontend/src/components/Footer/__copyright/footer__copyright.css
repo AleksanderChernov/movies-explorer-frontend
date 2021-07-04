@@ -1,0 +1,19 @@
+.footer__copyright {
+  align-self: center;
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  margin-top: 30px;
+}
+
+@media only screen and (min-width: 768px) {
+  .footer__copyright {
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-size: 13px;
+  }
+}

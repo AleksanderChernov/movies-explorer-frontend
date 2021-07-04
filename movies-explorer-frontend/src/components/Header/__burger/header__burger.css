@@ -1,0 +1,19 @@
+.header__burger {
+  background: url(../../../images/Header/header_hamburger.svg);
+  height: 44px;
+  width: 44px;
+  border: none;
+  cursor: pointer;
+  margin-right: -3px;
+}
+
+.header__burger:hover {
+  opacity: 0.5;
+  transition: opacity .35s ease-in-out;
+}
+
+@media only screen and (min-width: 1000px) {
+  .header__burger {
+    display: none;
+  }
+}

@@ -1,0 +1,35 @@
+.promo__title {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 31px;
+  line-height: 39px;
+  margin: 0px 4.3% 60px;
+  width: 300px;
+  height: 117px;
+  letter-spacing: -0.04em;
+  text-align: center;
+  padding-top: 198px;
+}
+
+@media only screen and (min-width: 768px) {
+  .promo__title {
+    margin: 21px 4% 0px;
+    font-size: 40px;
+    line-height: 52px;
+    width: 680px;
+    padding-top: 300px;
+    margin: 0px 4.3% 127px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .promo__title {
+    width: 626px;
+    height: 104px;
+    padding: 0;
+    margin: 48px 5.5% 0px;
+    text-align: left;
+  }
+}

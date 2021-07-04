@@ -1,0 +1,32 @@
+.header__authorization {
+  display: inline-block;
+  color: black;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  background: #3DDC84;
+  border-radius: 3px;
+  text-decoration: none;
+  padding: 5px 12px;
+  height: 16px;
+}
+
+.header__authorization:hover {
+  opacity: 0.3;
+  transition: opacity .35s ease-in-out;
+}
+
+@media only screen and (min-width: 768px) {
+  .header__authorization {
+    font-size: 12px;
+    padding: 10px 20px;
+  } 
+}
+
+@media only screen and (min-width: 1280px) {
+  .header__authorization {
+    padding: 8px 20px;
+  } 
+}

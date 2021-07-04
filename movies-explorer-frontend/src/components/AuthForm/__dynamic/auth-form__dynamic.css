@@ -1,0 +1,18 @@
+.auth-form__dynamic {
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 14.52px;
+  text-align: center;
+  margin: 0;
+  padding-right: 7px;
+}
+
+@media only screen and (min-width: 768px) {
+  .auth-form__dynamic {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

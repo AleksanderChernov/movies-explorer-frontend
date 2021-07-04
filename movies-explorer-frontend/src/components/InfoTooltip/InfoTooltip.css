@@ -1,0 +1,26 @@
+.infoTooltip {
+  visibility: hidden;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  background-color: rgba(32, 32, 32, 0.8);
+  position: fixed;
+  z-index: 5;
+  display: inline-flex;
+  transition: visibility .5s, opacity .5s linear;
+  display: flex;
+  justify-content: center;
+}
+
+.infoTooltip_visible {
+  visibility: visible;
+}
+
+/* Container */
+@import url(./__container/infoTooltip__container.css);
+
+/* Reactive Image */
+@import url(./__reactive-image/infoTooltip__reactive-image.css);
+
+/* Message */
+@import url(./__message/infoTooltip__message.css);

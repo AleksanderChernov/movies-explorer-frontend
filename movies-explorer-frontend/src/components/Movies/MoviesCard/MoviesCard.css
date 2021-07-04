@@ -1,0 +1,47 @@
+/* Movies Card */
+.movies-card {
+  display: flex;
+  flex-flow: column;
+  background-color: #222222;
+  box-shadow: 0px 16px 24px rgba(0, 0, 0, 0.05);
+  border-radius: 10px;
+  height: 235px;
+}
+
+@media only screen and (min-width: 620px) {
+  .movies-card {
+    width: 339px;
+    height: 257px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .movies-card {
+    width: 270px;
+    height: 218px;
+  }
+}
+
+/* Button */
+@import url(./__button/movies-card__button.css);
+
+/* Button_saved */
+@import url(./__button/_status/movies-card__button_saved.css);
+
+/* Delete */
+@import url(./__delete/movies-card__delete.css);
+
+/* Image */
+@import url(./__image/movies-card__image.css);
+
+/* Info-block */
+@import url(./__info-block/movies-card__info-block.css);
+
+/* Title */
+@import url(./__title/movies-card__title.css);
+
+/* Length */
+@import url(./__length/movies-card__length.css);
+
+/* Column */
+@import url(./__title-length-column/movies-card__title-length-column.css);

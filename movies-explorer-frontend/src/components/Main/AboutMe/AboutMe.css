@@ -1,0 +1,44 @@
+.about-me {
+  background-color: rgba(32, 32, 32, 1);
+  display: flex;
+  flex-flow: column;
+}
+
+@media only screen and (min-width: 768px) {
+  .about-me {
+    margin: 0 6.5%;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-me {
+    margin: 0 5.5%;
+  }
+}
+
+/* Title */
+@import url(./__title/about-me__title.css);
+
+/* Portrait */
+@import url(./__portrait/about-me__portrait.css);
+
+/* Name */
+@import url(./__name/about-me__name.css);
+
+/* Speciality */
+@import url(./__speciality/about-me__speciality.css);
+
+/* Text-wrapper */
+@import url(./__text-wrapper/about-me__text-wrapper.css);
+
+/* Innards-wrapper */
+@import url(./__innards-wrapper/about-me__innards-wrapper.css);
+
+/* Text-block */
+@import url(./__text-block/about-me__text-block.css);
+
+/* Contacts */
+@import url(./__contacts/about-me__contacts.css);
+
+/* Contacts-block */
+@import url(./__contacts-block/about-me__contacts-block.css);

@@ -1,0 +1,13 @@
+.search-form__search-wrapper {
+  display: flex;
+  width: 100%;
+  margin-top: 95px;
+  margin-bottom: 45px;
+}
+
+@media only screen and (min-width: 768px) {
+  .search-form__search-wrapper {
+    margin-top: 78px;
+    margin-bottom: 30px;
+  }
+}

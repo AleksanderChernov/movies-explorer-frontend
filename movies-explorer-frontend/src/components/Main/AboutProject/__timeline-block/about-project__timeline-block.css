@@ -1,0 +1,10 @@
+.about-project__timeline-block {
+  display: flex;
+  margin: 38px 0 24px;
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-project__timeline-block {
+    margin: 53px 0 40px;
+  }
+}

@@ -1,0 +1,25 @@
+.not-found__title-error {
+  color: white;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 96.82px;
+  text-align: center;
+  margin: 0;
+  padding-top: 329px;
+}
+
+@media only screen and (min-width: 768px) {
+  .not-found__title-error {
+    font-size: 140px;
+    line-height: 169.43px;
+    padding-top: 407px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .not-found__title-error {
+    padding-top: 245px;
+  }
+}

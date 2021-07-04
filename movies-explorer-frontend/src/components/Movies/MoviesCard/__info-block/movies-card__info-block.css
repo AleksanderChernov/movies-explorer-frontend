@@ -1,0 +1,5 @@
+.movies-card__info-block{
+  display: flex;
+  justify-content: space-between;
+  margin: 11px 12px 27px 12px;
+}

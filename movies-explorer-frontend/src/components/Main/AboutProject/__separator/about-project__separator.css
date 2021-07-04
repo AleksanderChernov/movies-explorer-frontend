@@ -1,0 +1,15 @@
+.about-project__separator {
+  border: 1px solid rgba(218, 218, 218, 1);
+  margin: 0;
+}
+
+/* @media only screen and (min-width: 768px) {
+  .about-project__separator {
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .about-project__separator {
+  }
+}
+ */

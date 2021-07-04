@@ -1,0 +1,25 @@
+.promo {
+  background-color: rgba(7, 48, 66, 1);
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
+
+@media only screen and (min-width: 768px) {
+  .promo {
+    flex-flow: column;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .promo {
+    align-items: flex-start;
+    flex-flow: column;
+  }
+}
+
+/* Title */
+@import url(./__title/promo__title.css);
+
+/* Лого */
+@import url(./__logo/promo__logo.css);

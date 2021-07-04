@@ -1,0 +1,24 @@
+.techs__stack-list {
+  display: grid;
+  column-gap: 10px;
+  row-gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  width: 178px;
+  margin: 8px auto;
+}
+
+@media only screen and (min-width: 768px) {
+  .techs__stack-list {
+    display: flex;
+    flex-flow: row;
+    width: auto;
+    margin: 45px auto 87px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .techs__stack-list {
+    margin: 62px auto 102px;
+  }
+}

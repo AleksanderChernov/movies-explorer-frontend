@@ -1,0 +1,28 @@
+.footer {
+  display: flex;
+  flex-flow: column;
+  background-color: rgba(32, 32, 32, 1);
+  position: relative;
+}
+
+/* Copyright */
+@import url(./__copyright/footer__copyright.css);
+
+/* Link */
+@import url(./__link/footer__link.css);
+
+/* Announcer */
+@import url(./__announcer/footer__announcer.css);
+
+/* Separator */
+@import url(./__separator/footer__separator.css);
+
+/* Links-wrapper */
+@import url(./__links-wrapper/footer__links-wrapper.css);
+
+/* Links-block */
+@import url(./__links-block/footer__links-block.css);
+
+/* Link-block_entities */
+@import url(./__links-block/_entity/footer__links-block_left.css);
+@import url(./__links-block/_entity/footer__links-block_right.css);

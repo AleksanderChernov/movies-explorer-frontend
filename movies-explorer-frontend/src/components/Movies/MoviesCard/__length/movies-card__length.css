@@ -1,0 +1,9 @@
+.movies-card__length {
+  color: rgba(139, 139, 139, 1);
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 11px;
+  line-height: 13.31px;
+  margin: 10px 0px 14px 0px;
+}
