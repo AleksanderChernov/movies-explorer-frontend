@@ -20,14 +20,15 @@ function SearchForm(props) {
       props.setSearchWord(word);
       props.isSearchWordEntered(true);
       setErrorMessage('')
-      props.isSavedMoviesRequest(false)
-    } else if (currentRoute === '/saved-movies') {
+      /* props.isSavedMoviesRequest(false) */
+    } else if (word.length && currentRoute === '/saved-movies') {
       e.preventDefault();
       props.setSearchWord(word);
       props.isSearchWordEntered(true);
       setErrorMessage('')
-      props.isSavedMoviesRequest(true)
+      /* props.isSavedMoviesRequest(true) */
     } else {
+      e.preventDefault();
       setErrorMessage('Нужно ввести ключевое слово')
     }
   }

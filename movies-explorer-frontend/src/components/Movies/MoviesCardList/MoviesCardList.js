@@ -12,9 +12,9 @@ function MoviesCardList(props) {
     errorText = <PopupFail text={'Нужно ввести ключевое слово'}/>
   } */
 
-  console.log('число фильмов  ' + props.moviesAmount,
+  console.log('число фильмов ' + props.moviesAmount,
    'ищем? ' +  props.searchWordState,
-    'есть ли слово ' +  props.searchWord.length
+    'cлово ' + props.searchWord
   )
 
   if (currentRoute === '/movies' 
