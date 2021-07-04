@@ -87,7 +87,7 @@ export default function Movies(props) {
           />)
           ) */}
       </MoviesCardList>
-      {props.movies.length > chosenAmount && 
+      {props.movies.length > chosenAmount && lastSearchWord.length &&
         <More showMore={showMore}
       />}
     </section>
