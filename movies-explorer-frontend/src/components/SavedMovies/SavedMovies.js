@@ -7,14 +7,34 @@ export default function SavedMovies(props) {
 
   const isSavedList = true;
 
+  const [moviesToShow, setMoviesToShow] = React.useState([]);
+
   console.log(props.savedMovies)
   console.log(props.filteredSavedMovies)
+  console.log(moviesToShow)
+
+  useEffect(()=>{
+    setMoviesToShow(props.savedMovies);
+    setMoviesToShow(props.filteredSavedMovies)
+    console.log('я спамлю в сохраненных')
+  }, [props.filteredSavedMovies])
+
+  useEffect(() => {
+    if(props.isCheckboxOn) {
+      setMoviesToShow(moviesToShow.filter((movies) =>
+      movies.duration <= 40))
+      console.log('ну и в сохраненных')
+    } else {
+      setMoviesToShow(props.filteredSavedMovies)
+      console.log('ответ отрицательный в сохраненных')
+    }
+  }, [props.isCheckboxOn])
 
   useEffect(() => {
     props.searchForSaved();
-    console.log('savedMoviesPath')
     props.savedMoviesPath(true)
     props.setCheckbox(false);
+    props.setIsReturning(true)
   }, [])
 
   return (
@@ -31,11 +51,10 @@ export default function SavedMovies(props) {
         searchWord={props.searchWord}
         searchWordState={props.isFiltering}
         preloaderActive={props.preloaderActive}
-        moviesAmount={props.savedMovies.length}
-        filteredSavedMoviesAmount={props.filteredSavedMovies.length}
+        moviesAmount={moviesToShow.length || 0}
+        filteredSavedMoviesAmount={moviesToShow.length || 0}
       >
-        {props.isReturning ? (
-          props.SavedMovies.map((item) => (
+        {moviesToShow.map((item) => (
             <MoviesCard
               isSavedList={isSavedList}
               key={item.nameRU}
@@ -43,16 +62,7 @@ export default function SavedMovies(props) {
               handleDelete={props.handleDelete}
               savedMoviesId={props.savedMoviesId}
             />
-        ))):(
-          props.filteredSavedMovies.map((item) => (
-            <MoviesCard
-              isSavedList={isSavedList}
-              key={item.nameRU}
-              movie={item}
-              handleDelete={props.handleDelete}
-              savedMoviesId={props.savedMoviesId}
-            />
-        )))}    
+        ))}    
       </MoviesCardList>
     </section>
   )

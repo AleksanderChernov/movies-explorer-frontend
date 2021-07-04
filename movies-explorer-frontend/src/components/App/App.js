@@ -68,9 +68,10 @@ function App() {
       })
   }
 
-  const getMoviesFiltered = useCallback(async (word) => {
+  const getMoviesFiltered = (word) => {
     /* setIsFiltering(true) */
-    setIsReturning(false)
+    try {
+      setIsReturning(false)
     if (isSavedMoviesRequest === false) {
       if (word.length) {
         localStorage.setItem('setWord', word)
@@ -78,7 +79,6 @@ function App() {
         word = localStorage.getItem('setWord');
       }
       const parsedMovies = JSON.parse(localStorage.getItem('ReceivedMovies')) || [];
-      if (isCheckboxOn === false) {
         const filtered = parsedMovies.filter((films, i, arr) => {
           const filmRUname = films.nameRU.toLowerCase()
           const searchWord = word.toLowerCase()
@@ -87,19 +87,7 @@ function App() {
         setFilteredResults(filtered);
         localStorage.setItem('lastSearched', JSON.stringify(filtered));
         togglePreloader(false)
-        setSearchWord('')
     } else {
-      const filtered = parsedMovies.filter((films) => 
-        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40 
-      );
-        localStorage.setItem('setWord', word)
-      setFilteredResults(filtered);
-      localStorage.setItem('lastSearched', JSON.stringify(filtered));
-      togglePreloader(false)
-      setSearchWord('')
-      }
-    } else {
-      if (isCheckboxOn === false) {
         const filtered = savedMovies.filter((films) =>
           films.nameRU.toLowerCase().includes(word.toLowerCase())
         );
@@ -107,23 +95,25 @@ function App() {
         setFilteredSavedMovies(filtered);
         localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
         togglePreloader(false);
-        /* setSearchWord('') */
-      } else if (isCheckboxOn) {
-        const filtered = savedMovies.filter((films) => 
-          films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40
-        );
-        localStorage.setItem('setWord', word)
-        setFilteredSavedMovies(filtered);
-        /* setSearchWord('') */
-        localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
-        togglePreloader(false);
-      }
     }
-  }, [isSavedMoviesRequest, isCheckboxOn, searchWord])
+    } catch(e) {
+      console.log(e)
+    }
+  };
 
-  const activateSearch = useCallback(() => {
-    getMoviesFiltered(searchWord);
-  }, [getMoviesFiltered, searchWord, isSavedMoviesRequest])
+  useEffect(()=>{
+    if (searchWord.length > 0) {
+      getMoviesFiltered(searchWord);
+      console.log('приказываю насыпать')
+    }
+  }, [searchWord])
+
+  /* const activateSearch = useCallback(() => {
+    if (searchWord.length > 0) {
+      getMoviesFiltered(searchWord);
+      console.log('приказываю насыпать')
+    }
+  }, [getMoviesFiltered, searchWord]) */
 
   function handleDeleteWithoutHex(movie) {
     setPreloader(true)
@@ -204,13 +194,13 @@ function App() {
   useEffect(() => {
     try {
       setPreloader(true);
-      const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || [];
+      /* const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || []; */
       const lastSearched = JSON.parse(localStorage.getItem('lastSearched')) || [];
-      const lastSearchWord = localStorage.getItem('setWord');
+      const lastSearchWord = localStorage.getItem('setWord') || '';
       console.log(lastSearched)
       console.log(lastSearchWord)
-      if (lastSearchedSaved.length && lastSearchWord.length && lastSearchWord !== '') {
-        /* setIsFiltering(true); */
+/*       if (lastSearchedSaved.length && lastSearchWord.length) {
+        setIsFiltering(true);
         console.log('выполняю')
         setIsReturning(true)
         setFilteredSavedMovies(lastSearchedSaved);
@@ -220,18 +210,18 @@ function App() {
         setFilteredSavedMovies([])
         console.log('выполняю 2')
         setPreloader(false)
-      }
-      if (lastSearched.length) {
+      } */
+      if (lastSearched.length && lastSearchWord.length ) {
         setIsReturning(true)
         console.log('выполняю 3')
         setFilteredResults(lastSearched);
         setPreloader(false)
-      } else {
+      }/*  else {
         setIsReturning(true)
         console.log('выполняю 4')
         setFilteredResults([])
         setPreloader(false)
-      }
+      } */
     } catch(e) {
       console.log(e)
       setPreloader(false)
@@ -246,13 +236,13 @@ function App() {
     setSavedMoviesId(savedMovies.map(a => a.movieId))
   }, [savedMovies])
 
-  useEffect(() => {
-    activateSearch();
+  /* useEffect(() => {
+    activateSearch(); */
     /* togglePreloader(true); */
-  }, [activateSearch, searchWord, isSavedMoviesRequest])
+  /* }, [activateSearch, searchWord, isSavedMoviesRequest])
   useEffect(() => {
     setIsFiltering(isCheckboxOn)
-  }, [isCheckboxOn])
+  }, [isCheckboxOn]) */
 
   useEffect(() => {
     const token = localStorage.getItem('token');
@@ -310,6 +300,7 @@ function App() {
           </Route>
           <Route path="/movies">
             <ProtectedRoute
+              setIsReturning={setIsReturning}
               isReturning={isReturning}
               error={error}
               handleDeleteWithoutHex={handleDeleteWithoutHex}
@@ -351,6 +342,7 @@ function App() {
               setSearchWord={handleSearchWord}
               setCheckbox={setCheckbox}
               isReturning={isReturning}
+              setIsReturning={setIsReturning}
             />
           </Route>
           <Route path="/profile">

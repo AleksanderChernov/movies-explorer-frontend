@@ -12,19 +12,19 @@ function MoviesCardList(props) {
     errorText = <PopupFail text={'Нужно ввести ключевое слово'}/>
   } */
 
-  if (currentRoute === '/movies' 
-    && props.moviesAmount <= 0 
-    && props.searchWordState 
-    && props.searchWord.length <= 0) {
-    errorText = <PopupFail text={'Ничего не найдено'}/>
-  }
+  console.log(props.moviesAmount <= 0, props.searchWordState, props.searchWord.length <= 0)
 
   if (currentRoute === '/movies' 
     && props.moviesAmount <= 0 
-    && props.isCheckboxOn === false
-    && props.searchWord.length <= 0) {
+    && props.searchWordState) {
     errorText = <PopupFail text={'Ничего не найдено'}/>
   }
+
+  /* if (currentRoute === '/movies' 
+    && props.moviesAmount <= 0 
+    && props.isCheckboxOn === false) {
+    errorText = <PopupFail text={'Ничего не найдено'}/>
+  } */
 
   if (currentRoute === '/movies' 
     && props.moviesAmount <= 0 

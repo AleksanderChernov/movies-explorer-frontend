@@ -9,19 +9,41 @@ export default function Movies(props) {
   const movieList = true;
 
   const [chosenAmount, setChosenAmount] = React.useState(undefined);
+  const [moviesToShow, setMoviesToShow] = React.useState([]);
   const [windowWidth, setWindowSize] = useState(undefined);
   const [addAmount, setIncreasedAmount] = React.useState(undefined);
-  const lastSearchWord = localStorage.getItem('setWord');
+  const lastSearchWord = localStorage.getItem('setWord') || '';
 
   function showMore() {
     return setChosenAmount(chosenAmount + addAmount);
   }
 
+  console.log(lastSearchWord.length);
+  console.log(props.movies);
+  console.log(props.searchWord)
+
   useEffect(() => {
-    /* props.searchForSaved(); */
+    props.searchForSaved();
     props.savedMoviesPath(false);
     props.setCheckbox(false);
+    props.setIsReturning(true)
   }, [])
+
+  useEffect(()=>{
+    setMoviesToShow(props.movies);
+    console.log('я спамлю')
+  }, [props.movies])
+
+  useEffect(() => {
+    if(props.isCheckboxOn) {
+      setMoviesToShow(moviesToShow.filter((movies) =>
+      movies.duration <= 40))
+      console.log('ну и')
+    } else {
+      setMoviesToShow(props.movies)
+      console.log('ответ отрицательный')
+    }
+  }, [props.isCheckboxOn])
 
   useEffect(() => {
     setTimeout(()=>{
@@ -62,9 +84,9 @@ export default function Movies(props) {
         searchWord={props.searchWord}
         searchWordState={props.isFiltering} 
         preloaderActive={props.preloaderActive}
-        moviesAmount={props.movies.length}
+        moviesAmount={moviesToShow.length}
       >
-        {lastSearchWord.length ? props.movies.slice(0, chosenAmount).map((item) => (
+        {moviesToShow.length && moviesToShow.slice(0, chosenAmount).map((item) => (
           <MoviesCard 
             handleDeleteWithoutHex={props.handleDeleteWithoutHex}
             savedMoviesId={props.savedMoviesId}
@@ -74,19 +96,9 @@ export default function Movies(props) {
             handleSave={props.handleSave}
             handleDelete={props.handleDelete}
           />)
-        ) : ''/*  props.movies.slice(0, chosenAmount).map((item) => (
-          <MoviesCard 
-            handleDeleteWithoutHex={props.handleDeleteWithoutHex}
-            savedMoviesId={props.savedMoviesId}
-            movieList={movieList} 
-            key={item.nameRU} 
-            movie={item} 
-            handleSave={props.handleSave}
-            handleDelete={props.handleDelete}
-          />)
-          ) */}
+        )}
       </MoviesCardList>
-      {props.movies.length > chosenAmount &&
+      {moviesToShow.length > chosenAmount &&
         <More showMore={showMore}
       />}
     </section>
