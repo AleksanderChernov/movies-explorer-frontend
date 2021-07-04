@@ -21,3 +21,6 @@
 
 /* Checkbox-text */
 @import url(./__checkbox-text/search-form__checkbox-text.css);
+
+/* Error */
+@import url(./__search-error/search-form__search-error.css);

@@ -8,12 +8,34 @@ function MoviesCardList(props) {
 
   const currentRoute = props.history.location.pathname;
   let errorText 
-  if (props.searchWordState) {
-    if (props.searchWord.length <= 0) {
-      errorText = <PopupFail text={'Нужно ввести ключевое слово'}/>
-    } else if (props.moviesAmount <= 0) {
-      errorText = <PopupFail text={'Ничего не найдено'}/>
-    }
+  /* if (props.searchWordState && props.searchWordLength <= 0) {
+    errorText = <PopupFail text={'Нужно ввести ключевое слово'}/>
+  } */
+
+  console.log('число фильмов  ' + props.moviesAmount,
+   'ищем? ' +  props.searchWordState,
+    'есть ли слово ' +  props.searchWord.length
+  )
+
+  if (currentRoute === '/movies' 
+    && props.moviesAmount <= 0 
+    && props.searchWordState 
+    && props.searchWord.length <= 0) {
+    errorText = <PopupFail text={'Ничего не найдено'}/>
+  }
+
+  if (currentRoute === '/movies' 
+    && props.moviesAmount <= 0 
+    && props.isCheckboxOn === false
+    && props.searchWord.length <= 0) {
+    errorText = <PopupFail text={'Ничего не найдено'}/>
+  }
+
+  if (currentRoute === '/movies' 
+    && props.moviesAmount <= 0 
+    && props.isCheckboxOn === true
+    && props.searchWord.length <= 0) {
+    errorText = <PopupFail text={'Ничего не найдено'}/>
   }
 
   if (props.error) {
@@ -31,7 +53,7 @@ function MoviesCardList(props) {
   return (
     <section className="movies-card-list">
     {props.children}
-    {props.searchWordState && props.searchWord.length > 0 && <Preloader 
+    {props.searchWordState/*  && props.searchWord.length */ && <Preloader 
       preloaderActive={props.preloaderActive}
     />}
     {errorText}

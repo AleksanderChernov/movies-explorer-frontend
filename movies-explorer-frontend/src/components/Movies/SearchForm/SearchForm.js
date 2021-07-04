@@ -8,18 +8,28 @@ function SearchForm(props) {
   const [word, setWord] = React.useState('');
 
   const currentRoute = props.history.location.pathname;
+  const [errorMessage, setErrorMessage] = React.useState('');
 
   function setSearch(e) {
     setWord(e.target.value);
   }
 
   function handleSubmit(e) {
-    e.preventDefault();
-    if (currentRoute === '/saved-movies') {
-      props.savedMoviesPath(true)
+    if (word.length) {
+      e.preventDefault();
+      props.setSearchWord(word);
+      props.isSearchWordEntered(true);
+      setErrorMessage('')
+      props.isSavedMoviesRequest(false)
+    } else if (currentRoute === '/saved-movies') {
+      e.preventDefault();
+      props.setSearchWord(word);
+      props.isSearchWordEntered(true);
+      setErrorMessage('')
+      props.isSavedMoviesRequest(true)
+    } else {
+      setErrorMessage('Нужно ввести ключевое слово')
     }
-    props.setSearchWord(word);
-    props.isSearchWordEntered(true);
   }
 
   return (
@@ -37,6 +47,7 @@ function SearchForm(props) {
           <FilterCheckbox checkboxClicked={props.checkboxClicked} isCheckboxOn={props.isCheckboxOn}/>
           <p className="search-form__checkbox-text">Короткометражки</p>
         </div>
+        <span className="search-form__search-error">{errorMessage}</span>
         <hr className="search-form__separator"></hr>
       </form>
     </section>

@@ -7,8 +7,14 @@ export default function SavedMovies(props) {
 
   const isSavedList = true;
 
+  console.log(props.savedMovies)
+  console.log(props.filteredSavedMovies)
+
   useEffect(() => {
-    props.searchForSaved()
+    props.searchForSaved();
+    console.log('savedMoviesPath')
+    props.savedMoviesPath(true)
+    props.setCheckbox(false);
   }, [])
 
   return (
@@ -18,36 +24,35 @@ export default function SavedMovies(props) {
         checkboxClicked={props.checkboxClicked} 
         isCheckboxOn={props.isCheckboxOn} 
         setSearchWord={props.setSearchWord}
-        savedMoviesPath={props.savedMoviesPath}
+        isSavedMoviesRequest={props.savedMoviesPath}
       />
       <MoviesCardList
         error={props.error}
         searchWord={props.searchWord}
-        searchWordState={props.searchWordState} 
+        searchWordState={props.isFiltering}
         preloaderActive={props.preloaderActive}
         moviesAmount={props.savedMovies.length}
         filteredSavedMoviesAmount={props.filteredSavedMovies.length}
       >
-        {props.savedMovies.length > 0 && props.searchWordState === false && props.savedMovies.map((item) => (
-          <MoviesCard 
-          isSavedList={isSavedList} 
-          key={item.nameRU} 
-          movie={item} 
-          handleDelete={props.handleDelete}
-          savedMoviesId={props.savedMoviesId}
-          />)
-        )}
-
-        {props.savedMovies.length > 0 && props.searchWordState && props.filteredSavedMovies.map((item) => (
-          <MoviesCard 
-          isSavedList={isSavedList} 
-          key={item.nameRU} 
-          movie={item} 
-          handleDelete={props.handleDelete}
-          savedMoviesId={props.savedMoviesId}
-          />)
-        )}
-
+        {props.isReturning ? (
+          props.SavedMovies.map((item) => (
+            <MoviesCard
+              isSavedList={isSavedList}
+              key={item.nameRU}
+              movie={item}
+              handleDelete={props.handleDelete}
+              savedMoviesId={props.savedMoviesId}
+            />
+        ))):(
+          props.filteredSavedMovies.map((item) => (
+            <MoviesCard
+              isSavedList={isSavedList}
+              key={item.nameRU}
+              movie={item}
+              handleDelete={props.handleDelete}
+              savedMoviesId={props.savedMoviesId}
+            />
+        )))}    
       </MoviesCardList>
     </section>
   )

@@ -1,0 +1,8 @@
+.search-form__search-error {
+  color: orangered;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 20px;
+  line-height: 18px;
+  font-family: 'Inter', Arial, Helvetica, sans-serif;
+}

@@ -17,7 +17,9 @@ export default function Movies(props) {
   }
 
   useEffect(() => {
-    props.searchForSaved()
+    props.searchForSaved();
+    props.savedMoviesPath(false);
+    props.setCheckbox(false);
   }, [])
 
   useEffect(() => {
@@ -41,7 +43,7 @@ export default function Movies(props) {
       }
 
       return() => window.removeEventListener("resize", handleResize);
-    }, 2000)
+    }, 1000)
   }, [windowWidth]);
 
   return (
@@ -51,16 +53,17 @@ export default function Movies(props) {
         checkboxClicked={props.checkboxClicked} 
         isCheckboxOn={props.isCheckboxOn} 
         setSearchWord={props.setSearchWord}
-        savedMoviesPath={props.savedMoviesPath}
-      />        
-      <MoviesCardList 
+        isSavedMoviesRequest={props.savedMoviesPath}
+      />
+      <MoviesCardList
+        isCheckboxOn={props.isCheckboxOn} 
         error={props.error}
         searchWord={props.searchWord}
-        searchWordState={props.searchWordState} 
+        searchWordState={props.isFiltering} 
         preloaderActive={props.preloaderActive}
         moviesAmount={props.movies.length}
       >
-        {props.searchWord.length > 0 && props.movies.slice(0, chosenAmount).map((item) => (
+        {props.isReturning ? props.movies.slice(0, chosenAmount).map((item) => (
           <MoviesCard 
             handleDeleteWithoutHex={props.handleDeleteWithoutHex}
             savedMoviesId={props.savedMoviesId}
@@ -70,9 +73,19 @@ export default function Movies(props) {
             handleSave={props.handleSave}
             handleDelete={props.handleDelete}
           />)
-        )}
+        ) : props.movies.slice(0, chosenAmount).map((item) => (
+          <MoviesCard 
+            handleDeleteWithoutHex={props.handleDeleteWithoutHex}
+            savedMoviesId={props.savedMoviesId}
+            movieList={movieList} 
+            key={item.nameRU} 
+            movie={item} 
+            handleSave={props.handleSave}
+            handleDelete={props.handleDelete}
+          />)
+          )}
       </MoviesCardList>
-      {props.movies.length > chosenAmount && props.searchWordState && props.searchWord.length > 0 && 
+      {props.movies.length > chosenAmount && 
         <More showMore={showMore}
       />}
     </section>

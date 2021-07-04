@@ -26,12 +26,12 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   const [searchWord, setSearchWord] = React.useState('');
   const [filteredResults, setFilteredResults] = React.useState([]);
-  const [searchWordState, setSearchWordState] = React.useState(false);
+  const [isFiltering, setIsFiltering] = React.useState(false);
   const [isSavedMoviesRequest, setSavedAdress] = React.useState(false);
+  const [isReturning, setIsReturning] = React.useState(false);
   const [error, setError] = React.useState(false);
   const [savedMovies, setSavedMovies] = React.useState([]);
   const [filteredSavedMovies, setFilteredSavedMovies] = React.useState([]);
-
   const [savedMoviesId, setSavedMoviesId] = React.useState([]);
 
   const fetchMovies = async () => {
@@ -46,10 +46,6 @@ function App() {
   function savedMoviesPath(state) {
     setSavedAdress(state)
   }
-
-  useEffect(() => {
-    togglePreloader(false);
-  }, [filteredResults])
 
   function handleSearchWord(word) {
     setSearchWord(word);
@@ -72,63 +68,55 @@ function App() {
       })
   }
 
-  useEffect(()=>{
-    setSavedMoviesId(savedMovies.map(a => a.movieId))
-  }, [savedMovies])
-
-  const getMoviesFiltered = useCallback(async(word) => {
-    console.log('it works')
-    debugger
+  const getMoviesFiltered = useCallback(async (word) => {
+    /* setIsFiltering(true) */
+    setIsReturning(false)
     if (isSavedMoviesRequest === false) {
-      const parsedMovies = JSON.parse(localStorage.getItem('ReceivedMovies'));
-      console.log(parsedMovies);
-      if (isCheckboxOn === false) {
-      const filtered = parsedMovies.filter((films, i, arr) => {
-        const filmRUname = films.nameRU.toLowerCase()
-        const searchWord = word.toLowerCase()
-        return filmRUname.includes(searchWord)
+      if (word.length) {
+        localStorage.setItem('setWord', word)
+      } else {
+        word = localStorage.getItem('setWord');
       }
-      );
-      localStorage.setItem('setWord', JSON.stringify(word))
-      setFilteredResults(filtered);
-      console.log(filtered + 'checkbox off обычные')
-      console.log(JSON.stringify(filtered))
-      localStorage.setItem('lastSearched', JSON.stringify(filtered));
-      togglePreloader(false)
+      const parsedMovies = JSON.parse(localStorage.getItem('ReceivedMovies')) || [];
+      if (isCheckboxOn === false) {
+        const filtered = parsedMovies.filter((films, i, arr) => {
+          const filmRUname = films.nameRU.toLowerCase()
+          const searchWord = word.toLowerCase()
+          return filmRUname.includes(searchWord)
+        });
+        setFilteredResults(filtered);
+        localStorage.setItem('lastSearched', JSON.stringify(filtered));
+        togglePreloader(false)
+        setSearchWord('')
     } else {
       const filtered = parsedMovies.filter((films) => 
         films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40 
       );
-      localStorage.setItem('setWord', JSON.stringify(word))
+        localStorage.setItem('setWord', word)
       setFilteredResults(filtered);
-      console.log(filtered + 'checkbox on обычные')
-      console.log(JSON.stringify(filtered))
       localStorage.setItem('lastSearched', JSON.stringify(filtered));
       togglePreloader(false)
+      setSearchWord('')
       }
     } else {
       if (isCheckboxOn === false) {
         const filtered = savedMovies.filter((films) =>
-        films.nameRU.toLowerCase().includes(word.toLowerCase())
-      );
-      localStorage.setItem('setWord', JSON.stringify(word))
-      setFilteredSavedMovies(filtered);
-      console.log(filtered + 'checkbox off сохраненные')
-      console.log(JSON.stringify(filtered))
-      localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
-      setSavedAdress(false)
-      togglePreloader(false)
-      } else {
+          films.nameRU.toLowerCase().includes(word.toLowerCase())
+        );
+        localStorage.setItem('setWord', word)
+        setFilteredSavedMovies(filtered);
+        localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
+        togglePreloader(false);
+        /* setSearchWord('') */
+      } else if (isCheckboxOn) {
         const filtered = savedMovies.filter((films) => 
-        films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40 
-      );
-      localStorage.setItem('setWord', word)
-      setFilteredSavedMovies(filtered);
-      console.log(filtered + 'checkbox on сохраненные')
-      console.log(JSON.stringify(filtered))
-      localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
-      setSavedAdress(false)
-      togglePreloader(false)
+          films.nameRU.toLowerCase().includes(word.toLowerCase()) && films.duration <= 40
+        );
+        localStorage.setItem('setWord', word)
+        setFilteredSavedMovies(filtered);
+        /* setSearchWord('') */
+        localStorage.setItem('lastSearchedSaved', JSON.stringify(filtered));
+        togglePreloader(false);
       }
     }
   }, [isSavedMoviesRequest, isCheckboxOn, searchWord])
@@ -136,11 +124,6 @@ function App() {
   const activateSearch = useCallback(() => {
     getMoviesFiltered(searchWord);
   }, [getMoviesFiltered, searchWord, isSavedMoviesRequest])
-
-  useEffect(() => {
-    activateSearch();
-    /* togglePreloader(true); */
-  }, [activateSearch, searchWord, isSavedMoviesRequest])
 
   function handleDeleteWithoutHex(movie) {
     setPreloader(true)
@@ -154,24 +137,6 @@ function App() {
       setPreloader(false)
     })
   }
-
-  useEffect(()=>{
-    try {
-      const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || [];
-      const lastSearched = JSON.parse(localStorage.getItem('lastSearched')) || [];
-      const word = localStorage.getItem('setWord');
-      setSearchWordState(true);
-      setSearchWord(word);
-      setFilteredSavedMovies(lastSearchedSaved);
-      setFilteredResults(lastSearched);
-      /* console.log(filteredResults); */
-      console.log(filteredSavedMovies);
-      console.log(lastSearchedSaved);
-      /* console.log(lastSearched); */
-    } catch(e) {
-      console.log(e)
-    } 
-  }, [])
 
   function handleDelete(movie) {
     setPreloader(true)
@@ -203,38 +168,8 @@ function App() {
   }
 
   function isSearchWordEntered() {
-    setSearchWordState(true);
+    setIsFiltering(true);
   }
-
-  useEffect(() => {
-      const token = localStorage.getItem('token');
-      if(token) {
-      MainApi.validity(token).then((res) => {
-        if (res) {
-          fetchMovies();
-          setUserData(res)
-          setLoggedIn(true);
-          history.push('/movies')
-        } else {
-          localStorage.removeItem('token');
-          localStorage.clear()
-        };
-      });
-    };   
-  }, [history, loggedIn])
-
-  useEffect(() => {
-    const token = localStorage.getItem('token')
-    if(token) {
-    MainApi.getMyProfileInfo(token)
-    .then(info => {
-      setCurrentUser(info)
-    })
-    .catch((err) => {
-    console.log(err);
-  })}
-
-  },[history, loggedIn]);
 
   function handleUpdateUser(info) {
     setPreloader(true)
@@ -266,6 +201,84 @@ function App() {
     setCheckbox(prevState => !prevState);
   }
 
+  useEffect(() => {
+    try {
+      setPreloader(true);
+      const lastSearchedSaved = JSON.parse(localStorage.getItem('lastSearchedSaved')) || [];
+      const lastSearched = JSON.parse(localStorage.getItem('lastSearched')) || [];
+      const lastSearchWord = localStorage.getItem('setWord') || '';
+      console.log(lastSearchedSaved)
+      console.log(lastSearched)
+      console.log(lastSearchWord)
+      if (lastSearchedSaved.length && lastSearchWord.length) {
+        /* setIsFiltering(true); */
+        setIsReturning(true)
+        setFilteredSavedMovies(lastSearchedSaved);
+        setPreloader(false)
+      } else {
+        setFilteredSavedMovies([])
+        setPreloader(false)
+      }
+      if (lastSearched.length && lastSearchWord.length) {
+        setIsReturning(true)
+        setFilteredResults(lastSearched);
+        setPreloader(false)
+      } else {
+        setFilteredResults([])
+        setPreloader(false)
+      }
+    } catch(e) {
+      console.log(e)
+      setPreloader(false)
+    }
+  }, [])
+
+  useEffect(() => {
+    togglePreloader(false);
+  }, [filteredResults])
+
+  useEffect(() => {
+    setSavedMoviesId(savedMovies.map(a => a.movieId))
+  }, [savedMovies])
+
+  useEffect(() => {
+    activateSearch();
+    /* togglePreloader(true); */
+  }, [activateSearch, searchWord, isSavedMoviesRequest])
+  useEffect(() => {
+    setIsFiltering(isCheckboxOn)
+  }, [isCheckboxOn])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token');
+    if(token) {
+      MainApi.validity(token).then((res) => {
+        if (res) {
+          fetchMovies();
+          setUserData(res)
+          setLoggedIn(true);
+          history.push('/movies')
+        } else {
+          localStorage.removeItem('token');
+          localStorage.clear()
+        };
+      });
+    };
+  }, [history, loggedIn])
+
+  useEffect(() => {
+    const token = localStorage.getItem('token')
+    if(token) {
+      MainApi.getMyProfileInfo(token)
+          .then(info => {
+            setCurrentUser(info)
+          })
+          .catch((err) => {
+            console.log(err);
+          })}
+
+  },[history, loggedIn]);
+
   return (
     <CurrentUserContext.Provider value={currentUser} data={userData}>
     <React.StrictMode>
@@ -292,6 +305,7 @@ function App() {
           </Route>
           <Route path="/movies">
             <ProtectedRoute
+              isReturning={isReturning}
               error={error}
               handleDeleteWithoutHex={handleDeleteWithoutHex}
               handleSave={handleSave}
@@ -305,10 +319,11 @@ function App() {
               isLoggedIn={loggedIn}
               movies={filteredResults}
               searchWord={searchWord}
-              searchWordState={searchWordState}
+              isFiltering={isFiltering}
               isSearchWordEntered={isSearchWordEntered}
               setSearchWord={handleSearchWord}
               handleDelete={handleDelete}
+              setCheckbox={setCheckbox}
             />
           </Route>
           <Route path="/saved-movies">
@@ -326,9 +341,11 @@ function App() {
               filteredSavedMovies={filteredSavedMovies}
               savedMovies={savedMovies}
               searchWord={searchWord}
-              searchWordState={searchWordState}
+              isFiltering={isFiltering}
               isSearchWordEntered={isSearchWordEntered}
               setSearchWord={handleSearchWord}
+              setCheckbox={setCheckbox}
+              isReturning={isReturning}
             />
           </Route>
           <Route path="/profile">
