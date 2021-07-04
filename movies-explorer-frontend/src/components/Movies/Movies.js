@@ -11,12 +11,11 @@ export default function Movies(props) {
   const [chosenAmount, setChosenAmount] = React.useState(undefined);
   const [windowWidth, setWindowSize] = useState(undefined);
   const [addAmount, setIncreasedAmount] = React.useState(undefined);
+  const lastSearchWord = localStorage.getItem('setWord');
 
   function showMore() {
     return setChosenAmount(chosenAmount + addAmount);
   }
-
-  const lastSearchWord = localStorage.getItem('setWord');
 
   useEffect(() => {
     /* props.searchForSaved(); */
@@ -75,7 +74,7 @@ export default function Movies(props) {
             handleSave={props.handleSave}
             handleDelete={props.handleDelete}
           />)
-        ): ''/*  : props.movies.slice(0, chosenAmount).map((item) => (
+        ) : ''/*  props.movies.slice(0, chosenAmount).map((item) => (
           <MoviesCard 
             handleDeleteWithoutHex={props.handleDeleteWithoutHex}
             savedMoviesId={props.savedMoviesId}
@@ -87,7 +86,7 @@ export default function Movies(props) {
           />)
           ) */}
       </MoviesCardList>
-      {props.movies.length > chosenAmount && lastSearchWord.length &&
+      {props.movies.length > chosenAmount &&
         <More showMore={showMore}
       />}
     </section>

@@ -12,11 +12,6 @@ function MoviesCardList(props) {
     errorText = <PopupFail text={'Нужно ввести ключевое слово'}/>
   } */
 
-  console.log('число фильмов ' + props.moviesAmount,
-   'ищем? ' +  props.searchWordState,
-    'cлово ' + props.searchWord
-  )
-
   if (currentRoute === '/movies' 
     && props.moviesAmount <= 0 
     && props.searchWordState 
@@ -53,7 +48,7 @@ function MoviesCardList(props) {
   return (
     <section className="movies-card-list">
     {props.children}
-    {props.searchWordState/*  && props.searchWord.length */ && <Preloader 
+    {<Preloader 
       preloaderActive={props.preloaderActive}
     />}
     {errorText}
